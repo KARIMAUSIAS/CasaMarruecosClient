@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Component home(R)!!</h1>
+      <p>De momento el componente home sólo va a tener código de ejemplo realizado en clase a modo de apuntes. Es una
+        play sandbox para que probéis código y os familiarizéis con Angular.</p>
+      <h1>Comunicación del control a la plantilla</h1>
+      <h2>Ejemplo de Interpolación:</h2>
+      Con la doble llave: {{nombre}}
+      <h2>Ejemplo de uso de atributo o propiedad en una imagen: (urlimagen es una variable del control)</h2>
+      <div>
+        <img [src]="urlimagen" alt="homer" width="400" />
+      </div>
+      <h2>Cambio de clase en un botón:</h2>
+      <button [class]="claseboton">{{nombre}}</button>
+      <h2>Cambio de Style CSS: (afectando el tamaño de HOLA)</h2>
+      <div [style.font-size]="mitamanyo">HOLA</div>
+      <h2>Ejemplo de comunicación de la plantilla al control: (ojo, prohibido usar alerts!)</h2>
+      <button class="btn btn-danger mx-3 my-5" (click)="openModal($event)">plantilla a contolador (open alert)</button>
+      <h2>Ejemplo de modal con bootstrap: (mejor usar bootstrap para informar al usuario:)</h2>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        open modal
+      </button>
+      <h2>Ejemplo de DDB</h2>
+      <label for="example">Ejemplo de salchicha dentro de caja:</label>
+      <input type="text" class="form-control" id="example" [(ngModel)]="valor" aria-describedby="help"
+        placeholder="Escribe aquí lo que quieras">
+      <small id="help" class="form-text text-muted">Veras que automáticamente Angular gestiona lo que has
+        enlazado.</small>
+      <h6>Aquí se muestra lo escrito:</h6>
+      <div class="m-5">{{valor}}</div>
+      <h1>FIN</h1>
+    </div>
+  </div>
+</div>
+<!-- modal de bootstrap-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="urlimagen" alt="homer" width="400" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>        
+      </div>
+    </div>
+  </div>
+</div>

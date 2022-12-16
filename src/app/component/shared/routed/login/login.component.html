@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center align-items-center m-5">
+
+    <div class="col">
+
+    
+
+        <div class="d-flex flex-row justify-content-center">
+          <div class="card p-5" style="width: 25rem;">
+          <form style="width:fit-content" [formGroup]="oFormularioLogin">
+
+            <div class="d-flex flex-row align-items-center justify-content-start ">
+              <p class="lead fw-normal my-5">LOGIN</p>
+            </div>
+
+            <!-- username input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="login">Username</label>
+              <input type="text" id="username" class="form-control" placeholder="Enter a username" name="username"
+                formControlName="username" />
+
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input type="password" id="password" class="form-control" placeholder="Enter password" name="password"
+                formControlName="username" />
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="button" class="btn btn-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                (click)="login()">Login</button>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="button" class="btn btn-warning" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                (click)="loginAsAdmin()">Login as admin</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

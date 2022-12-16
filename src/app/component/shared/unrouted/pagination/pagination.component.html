@@ -1,0 +1,7 @@
+<nav aria-label="pagination">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" aria-current="page" *ngFor="let number of this.getTotalPages(); let i = index">
+      <a class="page-link c-pointer" [class.active]="i === this.getNumberPage()" (click) ="this.setNumberPage( i )">{{i + 1}}</a>
+    </li>
+  </ul>
+</nav>
