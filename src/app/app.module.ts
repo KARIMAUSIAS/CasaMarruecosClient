@@ -17,6 +17,8 @@ import { CryptoService } from './service/crypto.service';
 import { DecodeService } from './service/decode.service';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { FooterComponent } from './component/shared/unrouted/footer/footer.component';
+import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/usuario-plist-admin-routed/usuario-plist-admin-routed.component';
+import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/usuario-new-admin-routed/usuario-new-admin-routed.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { FooterComponent } from './component/shared/unrouted/footer/footer.compo
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
     PaginationUnroutedComponent,
+    UsuarioPlistAdminRoutedComponent,
+    UsuarioNewAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,
