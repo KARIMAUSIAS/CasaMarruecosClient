@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseURL } from 'src/environments/environment';
 import { IPage } from '../model/generic-types-interface';
-import { IUsuario } from '../model/usuario-interface';
+import { IUsuario, IUsuario2Send } from '../model/usuario-interface';
 
 
 @Injectable({
@@ -46,13 +46,13 @@ export class UsuarioService {
     return this.oHttp.delete<number>(this.url + '/' + id);
   }
 
-  /*updateOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.put<number>(this.url, oUsuario2Send);
+  updateOne(oUsuario2Send: IUsuario2Send): Observable<number> {
+    return this.oHttp.put<number>(this.url + "/", oUsuario2Send);
   }
 
 
   newOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.post<number>(this.url, oUsuario2Send);
-  }*/
+    return this.oHttp.post<number>(this.url + "/", oUsuario2Send);
+  }
 
 }

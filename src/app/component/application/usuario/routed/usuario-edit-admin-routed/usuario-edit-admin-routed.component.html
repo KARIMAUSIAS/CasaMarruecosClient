@@ -1,29 +1,36 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Alta de Usuario</h1>
+        <h1 class="text-center mb-5">Edición de Developer</h1>
 
-        <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+        <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
 
           <div class="mb-3 row">
-            <label for="inputName" class="col-sm-2 col-form-label">Nombre</label>
+            <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="inputID" formControlName="id" readonly>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['required'] &&
               oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['minlength']
                 && oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['maxlength'],
                 'is-invalid' :  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']
                 ||  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength'] ||
-                oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']}" id="inputName"
+                oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']}" id="inputNombre"
                 formControlName="nombre">
-              <div id="inputNameFeedback" class="invalid-feedback"
+              <div id="inputNombreFeedback" class="invalid-feedback"
                 *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']">
                 La longitud mínima es de 5 caracteres.
               </div>
-              <div id="inputNameFeedback" class="invalid-feedback"
+              <div id="inputNombreFeedback" class="invalid-feedback"
                 *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength']">
                 La longitud máxima es de 10 caracteres.
               </div>
-              <div id="inputNameFeedback" class="invalid-feedback"
+              <div id="inputNombreFeedback" class="invalid-feedback"
                 *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']">
                 El campo es obligatorio.
               </div>
@@ -31,7 +38,7 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputApellido1" class="col-sm-2 col-form-label">Apellido1</label>
+            <label for="inputApellido1" class="col-sm-2 col-form-label">apellido1</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.apellido1.dirty && !oForm.controls.apellido1.errors?.['required'] &&
               oForm.controls.apellido1.dirty && !oForm.controls.apellido1.errors?.['minlength']
@@ -100,40 +107,68 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputUsuario" class="col-sm-2 col-form-label">Usuario</label>
+            <label for="inputUsuario" class="col-sm-2 col-form-label">usuario</label>
             <div class="col-sm-4 has-validation">
-              <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.usuario.dirty && !oForm.controls.usuario.errors?.['required'] &&
+              <input type="text" class="form-control" id="inputUsuario" formControlName="usuario" [ngClass]="{'is-valid' :
+              oForm.controls.usuario.dirty && !oForm.controls.usuario.errors?.['required'] &&
               oForm.controls.usuario.dirty && !oForm.controls.usuario.errors?.['minlength']
                 && oForm.controls.usuario.dirty && !oForm.controls.usuario.errors?.['maxlength'],
                 'is-invalid' :  oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['minlength']
                 ||  oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['maxlength'] ||
-                oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['required']}" id="inputUsuario"
-                formControlName="usuario">
-              <div id="inputUsuarioFeedback" class="invalid-feedback"
+                oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['required']}">
+              <div class="invalid-feedback"
                 *ngIf="oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['minlength']">
                 La longitud mínima es de 5 caracteres.
               </div>
-              <div id="inputUsuarioFeedback" class="invalid-feedback"
+              <div class="invalid-feedback"
                 *ngIf="oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['maxlength']">
                 La longitud máxima es de 10 caracteres.
               </div>
-              <div id="inputUsuarioFeedback" class="invalid-feedback"
+              <div class="invalid-feedback"
                 *ngIf="oForm.controls.usuario.dirty &&  oForm.controls.usuario.errors?.['required']">
                 El campo es obligatorio.
               </div>
             </div>
           </div>
 
+          <div class="mb-3 row">
+            <label for="inputTipousuario" class="col-sm-2 col-form-label">Tipousuario</label>
+            <div class="col-sm-6 has-validation">
+              <div class="input-group">
+                <span class="input-group-text">{{tipousuarioDescription}}</span>
+                <input type="text" class="form-control" formControlName="id_tipousuario"
+
+
+                (keyup)="updatetipousuarioDescription(oForm.controls.id_tipousuario.value)"
+
+                [ngClass]="{'is-valid' :
+                oForm.controls.id_tipousuario.dirty && !oForm.controls.id_tipousuario.errors?.['required'] &&
+                 !oForm.controls.id_tipousuario.errors?.['pattern'] && !oForm.controls.id_tipousuario.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required'] )
+                  ||
+                  ( oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['incorrect'])
+                }">
+                <button type="button" class="btn btn-primary" (click)="openModalFindTipousuario()">Buscar</button>
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['pattern']">
+                El campo ha de ser un entrero de máximo 6 dígitos.
+              </div>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary"
-            [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+          [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
 
         </form>
 
       </div>
     </div>
   </div>
-
-
 
   <div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -145,6 +180,26 @@
         <div class="modal-body">
 
           {{modalContent}}
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="findTipousuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <app-tipousuario-finder-admin-unrouted (closeEvent)="closeTipousuarioModal($event)"></app-tipousuario-finder-admin-unrouted>
 
         </div>
         <div class="modal-footer">

@@ -19,6 +19,11 @@ import { LogoutComponent } from './component/shared/routed/logout/logout.compone
 import { FooterComponent } from './component/shared/unrouted/footer/footer.component';
 import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/usuario-plist-admin-routed/usuario-plist-admin-routed.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/usuario-new-admin-routed/usuario-new-admin-routed.component';
+import { UsuarioViewAdminRoutedComponent } from './component/application/usuario/routed/usuario-view-admin-routed/usuario-view-admin-routed.component';
+import { UsuarioDetailAdminUnroutedComponent } from './component/application/usuario/unrouted/usuario-detail-admin-unrouted/usuario-detail-admin-unrouted.component';
+import { UsuarioDeleteAdminRoutedComponent } from './component/application/usuario/routed/usuario-delete-admin-routed/usuario-delete-admin-routed.component';
+import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
+import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
 
 
 @NgModule({
@@ -35,6 +40,11 @@ import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/
     PaginationUnroutedComponent,
     UsuarioPlistAdminRoutedComponent,
     UsuarioNewAdminRoutedComponent,
+    UsuarioViewAdminRoutedComponent,
+    UsuarioDetailAdminUnroutedComponent,
+    UsuarioDeleteAdminRoutedComponent,
+    UsuarioEditAdminRoutedComponent,
+    TipousuarioFinderAdminUnroutedComponent,
   ],
   imports: [
     BrowserModule,
