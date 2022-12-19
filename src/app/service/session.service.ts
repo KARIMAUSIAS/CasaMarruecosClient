@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { filter, map, Observable, Subscription, Subject } from 'rxjs';
-import { CryptoService } from './crypto.service';
-import { DecodeService } from './decode.service';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable, Subject, throwError, catchError, retry, tap } from 'rxjs';
 import { baseURL, httpOptions } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
     providedIn: 'root'
@@ -11,78 +10,46 @@ import { baseURL, httpOptions } from 'src/environments/environment';
 
 export class SessionService {
 
-    private entityURL = '/session';
+    private entityURL = '/sesion';
     sURL: string = `${baseURL}${this.entityURL}`;
     subject = new Subject<any>();
 
     constructor(
-        private oCryptoService: CryptoService,
-        private oHttpClient: HttpClient,
-        private oDecodeService: DecodeService
+        private http: HttpClient
     ) { }
+    onCheck = new EventEmitter<any>();
 
-    login(strLogin: string, strPassword: string): Observable<string> {
-        const loginData = JSON.stringify({ username: strLogin, password: this.oCryptoService.getSHA256(strPassword) });
-        return this.oHttpClient.post<string>(this.sURL, loginData, httpOptions);
-    }
-
-    getUserName(): string {
-        if (!this.isSessionActive()) {
-            return "";
-        } else {
-            let token: string = localStorage.getItem("token");
-            return this.oDecodeService.decode(token).name;
-        }
-    }
-
-    getToken(): string {
-        return localStorage.getItem("token");
-    }
-
-    isSessionActive(): Boolean {
-        let strToken: string = localStorage.getItem("token");
-        if (strToken) {
-            let oDecodedToken = this.oDecodeService.decode(strToken);
-            if (Date.now() >= oDecodedToken.exp * 1000) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    logout() {
-        localStorage.removeItem("token");
-    }
-
-    on(event: Events, action: any): Subscription {
-        return this.subject
-          .pipe(
-            filter((e: EmitEvent) => {
-              return e.name === event;
-            }),
-            map((e: EmitEvent) => {
-              return e.value;
-            })
-          )
-          .subscribe(action);
+    handleError(error: HttpErrorResponse) {
+      let errorMessage = 'Unknown error!';
+      if (error.error instanceof ErrorEvent) {
+        // Client-side errors
+        errorMessage = `Error: ${error.error.message}`;
+        if (environment) console.log("SessionService: error: " + errorMessage);
+      } else {
+        // Server-side errors
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        if (environment) console.log("SessionService: error: " + errorMessage);
       }
-    
-      emit(event: EmitEvent) {
-        this.subject.next(event);
-      }
+      return throwError(errorMessage);
+    }
 
+    login(loginData: String): Observable<String> {
+      if (environment) console.log("SessionService: login");
+      return this.http.post<String>(this.sURL, loginData, httpOptions).pipe(
+        tap((u: String) => console.log("session.service login HTTP request executed", u)),
+        retry(1),
+        catchError(this.handleError));
+    }
+
+    logout(): Observable<String> {
+      if (environment) console.log("SessionService: logout");
+      return this.http.delete<String>(this.sURL, httpOptions).pipe(
+        retry(1),
+        catchError(this.handleError));
+    }
+
+    check(): Observable<String> {
+      return this.http.get<String>(this.sURL, httpOptions)
+    }
 
 }
-
-export class EmitEvent {
-    constructor(public name: any, public value?: any) {}
-  }
-  
-  // this works like a communication channel
-  export enum Events {
-    login,
-    logout
-  }

@@ -1,10 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { IUser } from 'src/app/model/user-interface';
-import { DecodeService } from 'src/app/service/decode.service';
-import { EmitEvent, Events, SessionService } from 'src/app/service/session.service';
+import { Component, OnInit } from '@angular/core';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CryptoService } from 'src/app/service/crypto.service';
+import { MetadataService } from 'src/app/service/metadata.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-login',
@@ -14,42 +14,62 @@ import { EmitEvent, Events, SessionService } from 'src/app/service/session.servi
 
 export class LoginComponent implements OnInit {
 
-  oFormularioLogin: FormGroup<IUser>;
+  strOperation: string = "login"
+  formularioLogin: UntypedFormGroup;
+  oUserSession: IUser;
 
   constructor(
-    protected oRouter: Router,
-    private oFormBuilder: FormBuilder,
+    private FormBuilder: UntypedFormBuilder,
+    private oRoute: ActivatedRoute,
+    private oRouter: Router,
     private oSessionService: SessionService,
-    private oDecodeService: DecodeService
+    private oCryptoService: CryptoService,
+    public oMetadataService: MetadataService
   ) {
-    this.oFormularioLogin = <FormGroup>this.oFormBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
+
+    if (oRoute.snapshot.data['message']) {
+      this.oUserSession = this.oRoute.snapshot.data['message'];
+      localStorage.setItem("user", JSON.stringify(oRoute.snapshot.data['message']));
+      oRouter.navigate(['/home']);
+    } else {
+      localStorage.clear();
+    }
+
+    this.formularioLogin = <UntypedFormGroup>this.FormBuilder.group({
+      login: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void { }
+
+  onSubmit() {
+    const loginData = { usuario: this.formularioLogin.get('login')!.value, contraseña: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
+    console.log("login:onSubmit: ", loginData);
+    this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
+      localStorage.setItem("user", JSON.stringify(data.toString()));
+      if (data != null) {
+        this.oRouter.navigate(['/','home']);
+      } else {
+        localStorage.clear();
+      }
+    });
+    return false;
   }
 
-  login() {
-    this.oSessionService.login(this.oFormularioLogin.get('username')!.value, this.oFormularioLogin.get('password')!.value)
-      .subscribe({
-        next: (data: string) => {
-          localStorage.setItem("token", data);
-          this.oSessionService.emit(new EmitEvent(Events.login, data));
-          this.oRouter.navigate(['/home']);
-        },
-        error: (error: HttpErrorResponse) => {
-          console.log(error.status, error.statusText);
-        }
-      })
+  loginAdmin() {
+    this.formularioLogin.setValue({
+      login: "admin",
+      password: "wildcart"
+    })
   }
 
-  loginAsAdmin() {
-    console.log("loginAsAdmin");
-    this.oFormularioLogin.controls.username.setValue("raivi");
-    this.oFormularioLogin.controls.password.setValue("andamio");
+  loginUser() {
+    this.formularioLogin.setValue({
+      login: "user",
+      password: "wildcart"
+    })
   }
 
 }

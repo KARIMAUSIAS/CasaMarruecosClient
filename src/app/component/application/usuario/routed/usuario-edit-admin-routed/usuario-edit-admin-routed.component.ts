@@ -96,7 +96,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     }
 
     openModalFindTipousuario(): void {
-      this.myModal = new bootstrap.Modal(document.getElementById("findtipousuario"), { //pasar el myModal como parametro
+      this.myModal = new bootstrap.Modal(document.getElementById("findTipousuario"), { //pasar el myModal como parametro
         keyboard: false
       })
       this.myModal.show()
