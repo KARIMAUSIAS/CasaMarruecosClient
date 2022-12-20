@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faEye, faUserPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { ITipousuario } from 'src/app/model/tipousuario-interface';
+import { SessionService } from 'src/app/service/session.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
@@ -26,10 +27,12 @@ export class TipousuarioFinderAdminUnroutedComponent implements OnInit {
     faTrash = faTrash;
 
     constructor(
-      private oTipousuarioService: TipousuarioService
+      private oTipousuarioService: TipousuarioService,
+      private oSessionService: SessionService
     ) { }
 
     ngOnInit(): void {
+        localStorage.getItem;
       this.getPage();
     }
 

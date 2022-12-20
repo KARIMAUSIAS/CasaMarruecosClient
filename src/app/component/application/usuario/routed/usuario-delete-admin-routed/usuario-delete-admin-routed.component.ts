@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Location } from '@angular/common';
+import { SessionService } from 'src/app/service/session.service';
 
 declare let bootstrap: any;
 
@@ -19,11 +20,13 @@ export class UsuarioDeleteAdminRoutedComponent implements OnInit {
       protected oLocation: Location,
       private oActivatedRoute: ActivatedRoute,
       private oUsuarioService: UsuarioService,
+      private oSessionService: SessionService
     ) {
       this.id = oActivatedRoute.snapshot.params['id'];
     }
 
     ngOnInit(): void {
+        this.oSessionService.check;
     }
 
     removeOne() {

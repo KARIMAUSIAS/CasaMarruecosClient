@@ -32,7 +32,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
       private oActivatedRoute: ActivatedRoute,
       private oUsuarioService: UsuarioService,
       private oFormBuilder: FormBuilder,
-      private oTipousuarioService: TipousuarioService
+      private oTipousuarioService: TipousuarioService,
     ) {
       this.id = oActivatedRoute.snapshot.params['id'];
     }
@@ -53,7 +53,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
             apellido1: [data.apellido1, [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
             apellido2: [data.apellido2, [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
             email: [data.email, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,9}$')]],
-            usuario: [data.usuario, [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+            usuario: [data.usuario, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
             id_tipousuario: [data.tipousuario.id, [Validators.required, Validators.pattern(/^\d{1,6}$/)]]
           });
           this.updatetipousuarioDescription(this.oUsuario.tipousuario.id);

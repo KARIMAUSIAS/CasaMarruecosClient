@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUsuario, IUsuario2Form, IUsuario2Send } from 'src/app/model/usuario-interface';
+import { SessionService } from 'src/app/service/session.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 declare let bootstrap: any;
 
@@ -26,11 +27,13 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     constructor(
       private oRouter: Router,
       private oUsuarioService: UsuarioService,
-      private oFormBuilder: FormBuilder
+      private oFormBuilder: FormBuilder,
+      private oSessionService: SessionService
     ) {
     }
 
     ngOnInit() {
+        this.oSessionService.check;
       this.oForm = <FormGroup>this.oFormBuilder.group({
         id: [''],
         nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
