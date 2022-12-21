@@ -124,6 +124,35 @@
             </div>
           </div>
 
+          <div class="mb-3 row">
+            <label for="inputTipousuario" class="col-sm-2 col-form-label">Tipousuario</label>
+            <div class="col-sm-6 has-validation">
+              <div class="input-group">
+                <span class="input-group-text">{{tipousuarioDescription}}</span>
+                <input type="text" class="form-control" formControlName="id_tipousuario"
+
+                (keyup)="updatetipousuarioDescription(oForm.controls.id_tipousuario.value)"
+
+                [ngClass]="{'is-valid' :
+                oForm.controls.id_tipousuario.dirty && !oForm.controls.id_tipousuario.errors?.['required'] &&
+                 !oForm.controls.id_tipousuario.errors?.['pattern'] && !oForm.controls.id_tipousuario.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required'] )
+                  ||
+                  ( oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['incorrect'])
+                }">
+                <button type="button" class="btn btn-primary" (click)="openModalFindTipousuario()">Buscar</button>
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['pattern']">
+                El campo ha de ser un entrero de máximo 6 dígitos.
+              </div>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary"
             [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
 

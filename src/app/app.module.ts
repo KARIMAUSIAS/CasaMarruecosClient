@@ -23,6 +23,7 @@ import { UsuarioDetailAdminUnroutedComponent } from './component/application/usu
 import { UsuarioDeleteAdminRoutedComponent } from './component/application/usuario/routed/usuario-delete-admin-routed/usuario-delete-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
+import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { TipousuarioFinderAdminUnroutedComponent } from './component/application
     UsuarioDeleteAdminRoutedComponent,
     UsuarioEditAdminRoutedComponent,
     TipousuarioFinderAdminUnroutedComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

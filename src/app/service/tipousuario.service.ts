@@ -21,9 +21,9 @@ import { IPage } from '../model/generic-types-interface';
       .set("size", size);
 
       const url : string = `${baseURL}${this.entityURL}`;
-      return this.oHttp.get<IPage<ITipousuario>>(url,{params: params});
+      return this.oHttp.get<IPage<ITipousuario>>(url,{withCredentials:true, params: params});
     }
     getOne(id: number): Observable<ITipousuario> {
-        return this.oHttp.get<ITipousuario>(`${baseURL}${this.entityURL}` + "/" + id);
+        return this.oHttp.get<ITipousuario>(`${baseURL}${this.entityURL}` + "/" + id,{withCredentials:true});
       }
   }

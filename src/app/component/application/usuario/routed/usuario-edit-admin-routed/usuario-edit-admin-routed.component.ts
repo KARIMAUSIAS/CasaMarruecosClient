@@ -100,8 +100,6 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
         keyboard: false
       })
       this.myModal.show()
-
-
     }
 
     closeTipousuarioModal(id_tipousuario: number) {

@@ -1,0 +1,18 @@
+<div class="row justify-content-center">
+    <div class="col-md-5 control-group text-center my-3">
+        <div class="alert alert-danger" role="alert">
+
+            <h3 class="">Are you sure to logout?</h3>
+
+            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+                <button class="btn btn-warning mx-1" (click)="closeSession()"><i
+                        [ngClass]="oMetadataService.getIcon('logout')"></i> Close session</button>
+                <a class="btn btn-primary mx-1" [routerLink]="['/home']"><i
+                        [ngClass]="oMetadataService.getIcon('home')"></i> Go to home</a>
+                <button class="btn btn-primary mx-1" (click)="oLocation.back()"><i
+                        [ngClass]="oMetadataService.getIcon('return')"></i> Return backs</button>
+            </div>
+        </div>
+    </div>
+</div>
+

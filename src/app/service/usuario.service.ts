@@ -26,7 +26,7 @@ export class UsuarioService {
       .set("page", page)
       .set("size", size);
     if (id_usertype != 0) {
-      params = params.set("usertype", id_usertype);
+      params = params.set("tipousuario", id_usertype);
     }
     if (strSortField != "") { //&sort=codigo,[asc|desc]
       if (strOrderDirection != "") {
@@ -35,24 +35,24 @@ export class UsuarioService {
         params = params.set("sort", strSortField);
       }
     }
-    return this.oHttp.get<IPage<IUsuario>>(this.url, { params: params });
+    return this.oHttp.get<IPage<IUsuario>>(this.url, {withCredentials:true, params: params });
   }
 
   getOne(id: number): Observable<IUsuario> {
-    return this.oHttp.get<IUsuario>(this.url + "/" + id);
+    return this.oHttp.get<IUsuario>(this.url + "/" + id,{withCredentials:true});
   }
 
   removeOne(id: number): Observable<number> {
-    return this.oHttp.delete<number>(this.url + '/' + id);
+    return this.oHttp.delete<number>(this.url + '/' + id,{withCredentials:true});
   }
 
   updateOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.put<number>(this.url + "/", oUsuario2Send);
+    return this.oHttp.put<number>(this.url + "/", oUsuario2Send,{withCredentials:true});
   }
 
 
   newOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.post<number>(this.url + "/", oUsuario2Send);
+    return this.oHttp.post<number>(this.url + "/", oUsuario2Send,{withCredentials:true});
   }
 
 }

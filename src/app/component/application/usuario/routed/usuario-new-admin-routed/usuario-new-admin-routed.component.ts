@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ITipousuario } from 'src/app/model/tipousuario-interface';
 import { IUsuario, IUsuario2Form, IUsuario2Send } from 'src/app/model/usuario-interface';
 import { SessionService } from 'src/app/service/session.service';
+import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 declare let bootstrap: any;
 
@@ -23,12 +25,15 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     myModal: any;
     modalTitle: string = "";
     modalContent: string = "";
+    tipousuarioDescription: string = "";
+    id_tipousuario:number;
 
     constructor(
       private oRouter: Router,
       private oUsuarioService: UsuarioService,
       private oFormBuilder: FormBuilder,
-      private oSessionService: SessionService
+      private oSessionService: SessionService,
+      private oTipousuarioService: TipousuarioService
     ) {
     }
 
@@ -42,6 +47,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
         email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         usuario: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
       });
+      this.updatetipousuarioDescription(this.id_tipousuario);
     }
 
     onSubmit() {
@@ -53,7 +59,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
         apellido2: this.oForm.value.apellido2,
         email: this.oForm.value.email,
         usuario: this.oForm.value.usuario,
-        tipousuario: { id: 2  }
+        tipousuario: {id: this.oForm.value.id_tipousuario  }
       }
       if (this.oForm.valid) {
         this.oUsuarioService.newOne(this.oUsuario2Send).subscribe({
@@ -80,6 +86,30 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
       })
       this.myModal.show()
     }
+
+    updatetipousuarioDescription(id_tipousuario: number) {
+        this.oTipousuarioService.getOne(id_tipousuario).subscribe({
+          next: (data: ITipousuario) => {
+            this.tipousuarioDescription = data.nombre;
+          },
+          error: (error: any) => {
+            this.tipousuarioDescription = "tipousuario not found";
+            this.oForm.controls['id_tipousuario'].setErrors({'incorrect': true});
+          }
+        })
+      }
+      closeTipousuarioModal(id_tipousuario: number) {
+        this.oForm.controls['id_tipousuario'].setValue(id_tipousuario);
+        this.updatetipousuarioDescription(id_tipousuario);
+        this.myModal.hide();
+      }
+
+      openModalFindTipousuario(): void {
+        this.myModal = new bootstrap.Modal(document.getElementById("findTipousuario"), { //pasar el myModal como parametro
+          keyboard: false
+        })
+        this.myModal.show()
+      }
 
   }
 
