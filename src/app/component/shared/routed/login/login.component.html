@@ -4,7 +4,6 @@
 
         <div class="col-md-5 text-center">
             <div class="bg-light mt-5 p-5">
-                <img class="my-3" src="assets/img/wildCartLogo100.png" width="100">
                 <form [formGroup]="formularioLogin" (ngSubmit)="onSubmit()" novalidate class="row g-3">
                     <h4><i [ngClass]="oMetadataService.getIcon(this.strOperation)"></i> entrada al sistema</h4>
                     <div class="col-12 text-start">

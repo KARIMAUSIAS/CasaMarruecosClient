@@ -5,6 +5,7 @@ import { IUsuario, IUsuario2Form, IUsuario2Send } from 'src/app/model/usuario-in
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { ITipousuario } from 'src/app/model/tipousuario-interface';
+import { Location } from '@angular/common';
 declare let bootstrap: any;
 
 @Component({
@@ -29,6 +30,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
 
     constructor(
       private oRouter: Router,
+      protected oLocation: Location,
       private oActivatedRoute: ActivatedRoute,
       private oUsuarioService: UsuarioService,
       private oFormBuilder: FormBuilder,
@@ -93,6 +95,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
         this.oRouter.navigate(['/admin/Usuario/view', this.id])
       })
       this.myModal.show()
+      this.oLocation.back();
     }
 
     openModalFindTipousuario(): void {

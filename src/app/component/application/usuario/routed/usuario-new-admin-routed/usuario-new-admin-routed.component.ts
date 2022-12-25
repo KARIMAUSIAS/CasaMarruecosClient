@@ -45,9 +45,10 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
         apellido1: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
         apellido2: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
         email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-        usuario: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+        usuario: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+        id_tipousuario: ["", [Validators.required, Validators.pattern(/^\d{1,6}$/)]]
       });
-      this.updatetipousuarioDescription(this.id_tipousuario);
+      this.updateTipousuarioDescription(this.id_tipousuario);
     }
 
     onSubmit() {
@@ -87,20 +88,20 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
       this.myModal.show()
     }
 
-    updatetipousuarioDescription(id_tipousuario: number) {
+    updateTipousuarioDescription(id_tipousuario: number) {
         this.oTipousuarioService.getOne(id_tipousuario).subscribe({
           next: (data: ITipousuario) => {
             this.tipousuarioDescription = data.nombre;
           },
           error: (error: any) => {
-            this.tipousuarioDescription = "tipousuario not found";
+            this.tipousuarioDescription = "Tipousuario not found";
             this.oForm.controls['id_tipousuario'].setErrors({'incorrect': true});
           }
         })
       }
       closeTipousuarioModal(id_tipousuario: number) {
         this.oForm.controls['id_tipousuario'].setValue(id_tipousuario);
-        this.updatetipousuarioDescription(id_tipousuario);
+        this.updateTipousuarioDescription(id_tipousuario);
         this.myModal.hide();
       }
 
