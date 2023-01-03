@@ -5,9 +5,9 @@
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
           <a [routerLink]="['/admin/usuario/new']" class="btn btn-primary mx-3">Alta de usuario</a>
           <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
-          <!-- <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
-            (eeRpp)="this.setRpp($event)">
-          </app-dropdown-register-page> -->
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
         </div>
         <div class="col-md">
           <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
