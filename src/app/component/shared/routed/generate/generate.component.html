@@ -1,0 +1,42 @@
+<div class="container my-3">
+
+
+  <div class="row justify-content-center">
+
+
+    <div class="card text-center" *ngIf="bLoading">
+      <div class="card-body">
+        <h3 class="text-danger">Procesando... espere por favor.</h3>
+        <div class="spinner-border my-5" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped"  *ngIf="!bLoading">
+      <tbody>
+        <tr class="align-middle">
+          <th class="text-start py-3">Entidad </th>
+          <th class="text-center py-3">Número de registros </th>
+          <th class="text-center py-3">Generación aleatoria </th>
+        </tr>
+        <tr>
+          <th>Usuarios</th>
+          <td class="text-center">{{nUsuarios}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(10)">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
+                10</button>
+              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(100)">
+                100</button>
+              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(1000)">
+                1000</button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

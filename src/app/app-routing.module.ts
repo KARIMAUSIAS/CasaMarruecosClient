@@ -1,3 +1,4 @@
+import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'admin/usuario/remove/:id', component: UsuarioDeleteAdminRoutedComponent },
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'generate', component: GenerateComponent },
 ];
 
 @NgModule({

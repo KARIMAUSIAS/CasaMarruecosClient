@@ -54,5 +54,8 @@ export class UsuarioService {
   newOne(oUsuario2Send: IUsuario2Send): Observable<number> {
     return this.oHttp.post<number>(this.url + "/", oUsuario2Send,{withCredentials:true});
   }
+  getCountUsuarios(): Observable<number> {
+    return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
+  }
 
 }
