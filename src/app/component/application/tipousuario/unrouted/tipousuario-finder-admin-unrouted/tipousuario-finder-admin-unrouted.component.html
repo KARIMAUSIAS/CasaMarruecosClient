@@ -14,8 +14,14 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
+                <th (click)="setOrder('id')">ID
+                    <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                    <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+                  </th>
+                  <th (click)="setOrder('nombre')">Nombre
+                    <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                    <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+                  </th>
               <th>Usuarios</th>
             </tr>
           </thead>

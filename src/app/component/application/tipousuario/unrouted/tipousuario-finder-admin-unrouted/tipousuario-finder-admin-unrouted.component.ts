@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { faEye, faUserPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { ITipousuario } from 'src/app/model/tipousuario-interface';
 import { SessionService } from 'src/app/service/session.service';
@@ -18,6 +18,8 @@ export class TipousuarioFinderAdminUnroutedComponent implements OnInit {
     private pListContent!: ITipousuario[];
     private pagesCount!: number;
     private numberPage: number = 0;
+    sortField: string = "";
+    sortDirection: string = "";
     private pageRegister: number = 5;
     private termino: string = "";
     id_Tipousuario: number = 0;
@@ -25,6 +27,8 @@ export class TipousuarioFinderAdminUnroutedComponent implements OnInit {
     faEye = faEye;
     faUserPen = faUserPen;
     faTrash = faTrash;
+    faArrowUp = faArrowUp;
+    faArrowDown = faArrowDown;
 
     constructor(
       private oTipousuarioService: TipousuarioService,
@@ -37,7 +41,7 @@ export class TipousuarioFinderAdminUnroutedComponent implements OnInit {
     }
 
     getPage() {
-        this.oTipousuarioService.getTipousuarioPlist(this.numberPage, this.pageRegister)
+        this.oTipousuarioService.getTipousuarioPlist(this.numberPage, this.pageRegister, this.termino, this.sortField, this.sortDirection)
         .subscribe({
           next: (resp : IPage<ITipousuario>) =>{
             this.pListContent = resp.content;
@@ -90,5 +94,14 @@ export class TipousuarioFinderAdminUnroutedComponent implements OnInit {
     selectionTipousuario(id: number): void {
       this.closeEvent.emit(id);
     }
+    setOrder(order: string): void {
+        this.sortField = order;
+        if (this.sortDirection == "asc") {
+          this.sortDirection = "desc";
+        } else {
+          this.sortDirection = "asc";
+        }
+        this.getPage();
+      }
 
   }
