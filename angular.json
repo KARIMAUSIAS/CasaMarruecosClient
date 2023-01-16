@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "digimondecksClient": {
+      "CasaMarruecosClient": {
         "projectType": "application",
         "schematics": {},
         "root": "",
@@ -67,10 +67,10 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "production": {
-                "browserTarget": "digimondecksClient:build:production"
+                "browserTarget": "CasaMarruecosClient:build:production"
               },
               "development": {
-                "browserTarget": "digimondecksClient:build:development"
+                "browserTarget": "CasaMarruecosClient:build:development"
               }
             },
             "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
           "extract-i18n": {
             "builder": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-              "browserTarget": "digimondecksClient:build"
+              "browserTarget": "CasaMarruecosClient:build"
             }
           },
           "test": {

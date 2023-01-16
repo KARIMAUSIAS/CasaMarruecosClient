@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/andamio-client'),
+      dir: require('path').join(__dirname, './coverage/CasaMarruecos'),
       subdir: '.',
       reporters: [
         { type: 'html' },

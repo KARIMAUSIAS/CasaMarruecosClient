@@ -43,7 +43,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
         id: [''],
         nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         apellido1: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
-        apellido2: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+        apellido2: ['', [ Validators.minLength(3), Validators.maxLength(15)]],
         email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         usuario: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
         id_tipousuario: ["", [Validators.required, Validators.pattern(/^\d{1,6}$/)]]
