@@ -32,6 +32,7 @@ export class GenerateComponent implements OnInit {
       (num: number) => {
         this.strResult = "Ahora hay " + num + " usuarios";
         this.bLoading=false;
+        this.getCount();
       },
       err => {
         this.strResult = "ERROR: " + err.message;

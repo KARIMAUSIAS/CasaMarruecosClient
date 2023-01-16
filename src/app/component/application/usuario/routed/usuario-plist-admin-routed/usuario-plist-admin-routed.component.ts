@@ -58,6 +58,7 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
     setRpp(rpp: number) {
       this.numberOfElements = rpp;
+      this.setPage(1);
       this.getPage();
     }
 
