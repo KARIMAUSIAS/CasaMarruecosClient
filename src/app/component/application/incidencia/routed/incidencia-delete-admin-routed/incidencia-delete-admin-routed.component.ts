@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { SessionService } from 'src/app/service/session.service';
-import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { IncidenciaService } from 'src/app/service/incidencia.service';
+import { SessionService } from 'src/app/service/session.service';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-tipousuario-delete-admin-routed',
-  templateUrl: './tipousuario-delete-admin-routed.component.html',
-  styleUrls: ['./tipousuario-delete-admin-routed.component.css']
+  selector: 'app-incidencia-delete-admin-routed',
+  templateUrl: './incidencia-delete-admin-routed.component.html',
+  styleUrls: ['./incidencia-delete-admin-routed.component.css']
 })
-export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
+export class IncidenciaDeleteAdminRoutedComponent implements OnInit {
 
     id: number = 0;
     msg: string = "";
@@ -18,7 +18,7 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
     constructor(
       protected oLocation: Location,
       private oActivatedRoute: ActivatedRoute,
-      private oTipousuarioService: TipousuarioService,
+      private oIncidenciaService: IncidenciaService,
       private oSessionService: SessionService
     ) {
       this.id = oActivatedRoute.snapshot.params['id'];
@@ -29,9 +29,9 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
     }
 
     removeOne() {
-      this.oTipousuarioService.removeOne(this.id).subscribe({
+      this.oIncidenciaService.removeOne(this.id).subscribe({
         next: (data: number) => {
-          this.msg = "Tipo Usuario " + this.id + " removed";
+          this.msg = "Incidencia " + this.id + " removed";
           const myModal = new bootstrap.Modal('#removeInfo', {
             keyboard: false
           })
@@ -40,4 +40,5 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
         }
       })
     }
+
 }

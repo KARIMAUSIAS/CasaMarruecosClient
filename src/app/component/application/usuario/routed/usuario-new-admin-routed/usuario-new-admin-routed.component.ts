@@ -46,7 +46,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
         apellido2: ['', [ Validators.minLength(3), Validators.maxLength(15)]],
         email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         usuario: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-        id_tipousuario: ["", [Validators.required, Validators.pattern(/^\d{1,6}$/)]]
+        id_tipousuario: ["", [Validators.required]]
       });
       this.updateTipousuarioDescription(this.id_tipousuario);
     }

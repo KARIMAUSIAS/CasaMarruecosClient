@@ -1,10 +1,10 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Lista de usuarios</h1>
+        <h1 class="text-center mb-5">Lista de Incidencias</h1>
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-          <a [routerLink]="['/admin/usuario/new']" class="btn btn-primary mx-3">Alta de usuario</a>
-          <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <a [routerLink]="['/admin/incidencia/new']" class="btn btn-primary mx-3">Alta de incidencia</a>
+          <app-search-unrouted [placeHolder]="'Buscar incidencia'" (onSearch)="setFilter( $event )"></app-search-unrouted>
           <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size"
           (eeRpp)="this.setRpp($event)">
         </app-dropdown-register-page>
@@ -15,8 +15,8 @@
         </div>
         <div class="col-md text-start">
           <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
-          <button class="btn btn-outline-danger" *ngIf="id_tipousuarioFilter!=0" (click)="setFilterByTipousuario(0)">
-            <i class="bi bi-x-circle"></i> Reset tipousuario {{id_tipousuarioFilter}} filter</button>
+          <button class="btn btn-outline-danger" *ngIf="id_usuarioFilter!=0" (click)="setFilterByUsuario(0)">
+            <i class="bi bi-x-circle"></i> Reset usuario {{id_usuarioFilter}} filter</button>
         </div>
         <div class="col-md text-end">
           <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
@@ -28,37 +28,33 @@
                 <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
                 <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
               </th>
-              <th (click)="setOrder('nombre')">Nombre
-                <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
-                <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+              <th (click)="setOrder('lugar')">Lugar
+                <fa-icon *ngIf="sortField=='lugar'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                <fa-icon *ngIf="sortField=='lugar'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
               </th>
-              <th (click)="setOrder('apellido1')">Apellido1</th>
-              <th (click)="setOrder('apellido2')">Apellido2</th>
-              <th (click)="setOrder('email')">Email</th>
+              <th (click)="setOrder('fecha')">Fecha</th>
+              <th (click)="setOrder('descripcion')">Descripcion</th>
               <th (click)="setOrder('usuario')">Usuario</th>
-              <th (click)="setOrder('tipousuario')">Tipo Usuario</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let usuario of responseFromServer.content">
-              <td>{{usuario.id}}</td>
-              <td>{{usuario.nombre}}</td>
-              <td>{{usuario.apellido1}}</td>
-              <td>{{usuario.apellido2}}</td>
-              <td>{{usuario.email}}</td>
-              <td>{{usuario.usuario}}</td>
-              <td (click)="setFilterByTipousuario(usuario.tipousuario.id)">
-                {{usuario.tipousuario.id}}-{{usuario.tipousuario.nombre}}</td>
+            <tr *ngFor="let incidencia of responseFromServer.content">
+              <td>{{incidencia.id}}</td>
+              <td>{{incidencia.lugar}}</td>
+              <td>{{incidencia.fecha}}</td>
+              <td>{{incidencia.descripcion}}</td>
+              <td (click)="setFilterByUsuario(incidencia.usuario.id)">
+                {{incidencia.usuario.id}}-{{incidencia.usuario.usuario}}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
-                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/usuario/view',usuario.id]">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/incidencia/view',incidencia.id]">
                     <fa-icon [icon]="faEye"></fa-icon>
                   </button>
-                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/usuario/edit',usuario.id]">
+                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/incidencia/edit',incidencia.id]">
                     <fa-icon [icon]="faUserPen"></fa-icon>
                   </button>
-                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/usuario/remove',usuario.id]">
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin','incidencia','remove',incidencia.id]">
                     <fa-icon [icon]="faTrash"></fa-icon>
                   </button>
                 </div>

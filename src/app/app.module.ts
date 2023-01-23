@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
@@ -31,6 +33,13 @@ import { TipousuarioDetailAdminUnroutedComponent } from './component/application
 import { TipousuarioDeleteAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-delete-admin-routed/tipousuario-delete-admin-routed.component';
 import { TipousuarioNewAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-new-admin-routed/tipousuario-new-admin-routed.component';
 import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-admin-routed/tipousuario-edit-admin-routed.component';
+import { UsuarioFinderAdminUnroutedComponent } from './component/application/usuario/unrouted/usuario-finder-admin-unrouted/usuario-finder-admin-unrouted.component';
+import { IncidenciaPlistAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-plist-admin-routed/incidencia-plist-admin-routed.component';
+import { IncidenciaViewAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-view-admin-routed/incidencia-view-admin-routed.component';
+import { IncidenciaDetailAdminUnroutedComponent } from './component/application/incidencia/unrouted/incidencia-detail-admin-unrouted/incidencia-detail-admin-unrouted.component';
+import { IncidenciaDeleteAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-delete-admin-routed/incidencia-delete-admin-routed.component';
+import { IncidenciaNewAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-new-admin-routed/incidencia-new-admin-routed.component';
+import { IncidenciaEditAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-edit-admin-routed/incidencia-edit-admin-routed.component';
 
 
 @NgModule({
@@ -59,6 +68,13 @@ import { TipousuarioEditAdminRoutedComponent } from './component/application/tip
     TipousuarioDeleteAdminRoutedComponent,
     TipousuarioNewAdminRoutedComponent,
     TipousuarioEditAdminRoutedComponent,
+    UsuarioFinderAdminUnroutedComponent,
+    IncidenciaPlistAdminRoutedComponent,
+    IncidenciaViewAdminRoutedComponent,
+    IncidenciaDetailAdminUnroutedComponent,
+    IncidenciaDeleteAdminRoutedComponent,
+    IncidenciaNewAdminRoutedComponent,
+    IncidenciaEditAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +82,9 @@ import { TipousuarioEditAdminRoutedComponent } from './component/application/tip
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CalendarModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     CryptoService,
