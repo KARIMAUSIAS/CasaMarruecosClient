@@ -1,4 +1,4 @@
-import { ITipousuario } from './../model/tipousuario-interface';
+import { ITipousuario, ITipousuario2Send } from './../model/tipousuario-interface';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -36,5 +36,21 @@ import { IPage } from '../model/generic-types-interface';
     }
     getOne(id: number): Observable<ITipousuario> {
         return this.oHttp.get<ITipousuario>(`${baseURL}${this.entityURL}` + "/" + id,{withCredentials:true});
+      }
+
+      removeOne(id: number): Observable<number> {
+        return this.oHttp.delete<number>(this.url + '/' + id,{withCredentials:true});
+      }
+
+      updateOne(oTipousuario2Send: ITipousuario2Send): Observable<number> {
+        return this.oHttp.put<number>(this.url + "/", oTipousuario2Send,{withCredentials:true});
+      }
+
+
+      newOne(oTipousuario2Send: ITipousuario2Send): Observable<number> {
+        return this.oHttp.post<number>(this.url + "/", oTipousuario2Send,{withCredentials:true});
+      }
+      getCountUsuarios(): Observable<number> {
+        return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
       }
   }

@@ -1,3 +1,8 @@
+import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-admin-routed/tipousuario-edit-admin-routed.component';
+import { TipousuarioNewAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-new-admin-routed/tipousuario-new-admin-routed.component';
+import { TipousuarioDeleteAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-delete-admin-routed/tipousuario-delete-admin-routed.component';
+import { TipousuarioViewAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-admin-routed/tipousuario-view-admin-routed.component';
+import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-admin-routed/tipousuario-plist-admin-routed.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
@@ -22,6 +27,11 @@ const routes: Routes = [
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'generate', component: GenerateComponent },
+  { path: 'admin/tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent },
+  { path: 'admin/tipousuario/new', component: TipousuarioNewAdminRoutedComponent },
+  { path: 'admin/tipousuario/view/:id', component: TipousuarioViewAdminRoutedComponent },
+  { path: 'admin/tipousuario/remove/:id', component: TipousuarioDeleteAdminRoutedComponent },
+  { path: 'admin/tipousuario/edit/:id', component: TipousuarioEditAdminRoutedComponent },
 ];
 
 @NgModule({

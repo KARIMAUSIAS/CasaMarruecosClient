@@ -25,6 +25,12 @@ import { UsuarioEditAdminRoutedComponent } from './component/application/usuario
 import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
+import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-admin-routed/tipousuario-plist-admin-routed.component';
+import { TipousuarioViewAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-admin-routed/tipousuario-view-admin-routed.component';
+import { TipousuarioDetailAdminUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-detail-admin-unrouted/tipousuario-detail-admin-unrouted.component';
+import { TipousuarioDeleteAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-delete-admin-routed/tipousuario-delete-admin-routed.component';
+import { TipousuarioNewAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-new-admin-routed/tipousuario-new-admin-routed.component';
+import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-admin-routed/tipousuario-edit-admin-routed.component';
 
 
 @NgModule({
@@ -47,6 +53,12 @@ import { GenerateComponent } from './component/shared/routed/generate/generate.c
     TipousuarioFinderAdminUnroutedComponent,
     LogoutComponent,
     GenerateComponent,
+    TipousuarioPlistAdminRoutedComponent,
+    TipousuarioViewAdminRoutedComponent,
+    TipousuarioDetailAdminUnroutedComponent,
+    TipousuarioDeleteAdminRoutedComponent,
+    TipousuarioNewAdminRoutedComponent,
+    TipousuarioEditAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,

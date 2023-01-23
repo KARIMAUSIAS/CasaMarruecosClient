@@ -29,8 +29,5 @@ export class UsuarioDetailAdminUnroutedComponent implements OnInit {
       })
     }
 
-    changeID(ev) {
-      this.id = ev.target.value;
-    }
 
   }
