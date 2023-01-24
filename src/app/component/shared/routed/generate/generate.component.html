@@ -21,16 +21,32 @@
           <th class="text-center py-3">Generación aleatoria </th>
         </tr>
         <tr>
-          <th>Usuarios</th>
-          <td class="text-center">{{nUsuarios}}</td>
+            <th>Usuarios</th>
+            <td class="text-center">{{nUsuarios}}</td>
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+                <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(10)">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
+                  10</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(100)">
+                  100</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(1000)">
+                  1000</button>
+              </div>
+            </td>
+          </tr>
+
+        <tr>
+          <th>Incidencias</th>
+          <td class="text-center">{{nIncidencias}}</td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
-              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(10)">
+              <button type="button" class="btn btn-success mx-2" (click)="generateIncidencias(10)">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
                 10</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(100)">
+              <button type="button" class="btn btn-success mx-2" (click)="generateIncidencias(100)">
                 100</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateUsuarios(1000)">
+              <button type="button" class="btn btn-success mx-2" (click)="generateIncidencias(1000)">
                 1000</button>
             </div>
           </td>

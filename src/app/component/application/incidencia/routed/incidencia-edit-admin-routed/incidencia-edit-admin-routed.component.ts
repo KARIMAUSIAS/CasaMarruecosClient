@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IIncidencia, IIncidencia2Form, IIncidencia2Send } from 'src/app/model/incidencia-interface';
 import { IncidenciaService } from 'src/app/service/incidencia.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario } from 'src/app/model/usuario-interface';
+import { Location } from '@angular/common';
 declare let bootstrap: any;
 
 @Component({

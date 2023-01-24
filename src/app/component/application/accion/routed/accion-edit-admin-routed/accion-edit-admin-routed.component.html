@@ -1,39 +1,22 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Alta de Incidencia</h1>
+        <h1 class="text-center mb-5">Edición de Incidencia</h1>
 
-        <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+        <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
 
           <div class="mb-3 row">
-            <label for="inputLugar" class="col-sm-2 col-form-label">Lugar</label>
-            <div class="col-sm-4 has-validation">
-              <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.lugar.dirty && !oForm.controls.lugar.errors?.['required'] &&
-              oForm.controls.lugar.dirty && !oForm.controls.lugar.errors?.['minlength']
-                && oForm.controls.lugar.dirty && !oForm.controls.lugar.errors?.['maxlength'],
-                'is-invalid' :  oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['minlength']
-                ||  oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['maxlength'] ||
-                oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['required']}" id="inputLugar"
-                formControlName="lugar">
-              <div id="inputLugarFeedback" class="invalid-feedback"
-                *ngIf="oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['minlength']">
-                La longitud mínima es de 5 caracteres.
-              </div>
-              <div id="inputLugarFeedback" class="invalid-feedback"
-                *ngIf="oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['maxlength']">
-                La longitud máxima es de 10 caracteres.
-              </div>
-              <div id="inputLugarFeedback" class="invalid-feedback"
-                *ngIf="oForm.controls.lugar.dirty &&  oForm.controls.lugar.errors?.['required']">
-                El campo es obligatorio.
-              </div>
+            <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="inputID" formControlName="id" readonly>
             </div>
-          </div>
+        </div>
 
           <div class="mb-3 row">
             <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-10">
-                <p-calendar formControlName="fecha" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
+                <p-calendar formControlName="fecha" dateFormat="yy-mm-dd" dataType="string" inputId="spanish" [showIcon]="true"
+                inputId="spanish"></p-calendar>
             </div>
           </div>
 
@@ -63,26 +46,26 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputUsuario" class="col-sm-2 col-form-label">Usuario</label>
+            <label for="inputincidencia" class="col-sm-2 col-form-label">incidencia</label>
             <div class="col-sm-6 has-validation">
               <div class="input-group">
-                <span class="input-group-text">{{usuarioDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_usuario"
+                <span class="input-group-text">{{incidenciaDescription}}</span>
+                <input type="text" class="form-control" formControlName="id_incidencia"
 
 
-                (keyup)="updateUsuarioDescription(oForm.controls.id_usuario.value)"
+                (keyup)="updateIncidenciaDescription(oForm.controls.id_incidencia.value)"
 
                 [ngClass]="{'is-valid' :
-                oForm.controls.id_usuario.dirty && !oForm.controls.id_usuario.errors?.['required'] &&
-                 !oForm.controls.id_usuario.errors?.['pattern'] && !oForm.controls.id_usuario.errors?.['incorrect'],
-                  'is-invalid' :  (oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required'] )
+                oForm.controls.id_incidencia.dirty && !oForm.controls.id_incidencia.errors?.['required'] &&
+                 !oForm.controls.id_incidencia.errors?.['pattern'] && !oForm.controls.id_incidencia.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_incidencia.dirty &&  oForm.controls.id_incidencia.errors?.['required'] )
                   ||
-                  ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
+                  ( oForm.controls.id_incidencia.dirty &&  oForm.controls.id_incidencia.errors?.['incorrect'])
                 }">
-                <button type="button" class="btn btn-primary" (click)="openModalFindUsuario()">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)="openModalFindIncidencia()">Buscar</button>
               </div>
               <div class="text-danger"
-                *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
+                *ngIf="oForm.controls.id_incidencia.dirty &&  oForm.controls.id_incidencia.errors?.['required']">
                 El campo es obligatorio.
               </div>
             </div>
@@ -118,7 +101,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="findUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="findIncidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -127,7 +110,7 @@
         </div>
         <div class="modal-body">
 
-          <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)"></app-usuario-finder-admin-unrouted>
+          <app-incidencia-finder-admin-unrouted (closeEvent)="closeIncidenciaModal($event)"></app-incidencia-finder-admin-unrouted>
 
         </div>
         <div class="modal-footer">

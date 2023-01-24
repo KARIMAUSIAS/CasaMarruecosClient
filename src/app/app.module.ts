@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
@@ -40,6 +40,13 @@ import { IncidenciaDetailAdminUnroutedComponent } from './component/application/
 import { IncidenciaDeleteAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-delete-admin-routed/incidencia-delete-admin-routed.component';
 import { IncidenciaNewAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-new-admin-routed/incidencia-new-admin-routed.component';
 import { IncidenciaEditAdminRoutedComponent } from './component/application/incidencia/routed/incidencia-edit-admin-routed/incidencia-edit-admin-routed.component';
+import { AccionPlistAdminRoutedComponent } from './component/application/accion/routed/accion-plist-admin-routed/accion-plist-admin-routed.component';
+import { AccionViewAdminRoutedComponent } from './component/application/accion/routed/accion-view-admin-routed/accion-view-admin-routed.component';
+import { AccionDetailAdminUnroutedComponent } from './component/application/accion/unrouted/accion-detail-admin-unrouted/accion-detail-admin-unrouted.component';
+import { AccionDeleteAdminRoutedComponent } from './component/application/accion/routed/accion-delete-admin-routed/accion-delete-admin-routed.component';
+import { AccionEditAdminRoutedComponent } from './component/application/accion/routed/accion-edit-admin-routed/accion-edit-admin-routed.component';
+import { IncidenciaFinderAdminUnroutedComponent } from './component/application/incidencia/unrouted/incidencia-finder-admin-unrouted/incidencia-finder-admin-unrouted.component';
+import { AccionNewAdminRoutedComponent } from './component/application/accion/routed/accion-new-admin-routed/accion-new-admin-routed.component';
 
 
 @NgModule({
@@ -75,6 +82,13 @@ import { IncidenciaEditAdminRoutedComponent } from './component/application/inci
     IncidenciaDeleteAdminRoutedComponent,
     IncidenciaNewAdminRoutedComponent,
     IncidenciaEditAdminRoutedComponent,
+    AccionPlistAdminRoutedComponent,
+    AccionViewAdminRoutedComponent,
+    AccionDetailAdminUnroutedComponent,
+    AccionDeleteAdminRoutedComponent,
+    AccionEditAdminRoutedComponent,
+    IncidenciaFinderAdminUnroutedComponent,
+    AccionNewAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +98,7 @@ import { IncidenciaEditAdminRoutedComponent } from './component/application/inci
     HttpClientModule,
     FontAwesomeModule,
     CalendarModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
   ],
   providers: [
     CryptoService,

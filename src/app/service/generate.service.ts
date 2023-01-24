@@ -16,6 +16,10 @@ export class GenerateService {
     return this.http.post<number>(baseURL + '/usuario/generate/' + n, { amount: n }, httpOptions);
   }
 
+  generateIncidencias(n: number): Observable<number> {
+    return this.http.post<number>(baseURL + '/incidencia/generate/' + n, { amount: n }, httpOptions);
+  }
+
 
 
 }

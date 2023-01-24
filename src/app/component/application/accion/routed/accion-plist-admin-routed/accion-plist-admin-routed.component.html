@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de accions</h1>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <a [routerLink]="['/admin/accion/new']" class="btn btn-primary mx-3">Alta de accion</a>
+          <app-search-unrouted [placeHolder]="'Buscar accion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-start">
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_incidenciaFilter!=0" (click)="setFilterByIncidencia(0)">
+            <i class="bi bi-x-circle"></i> Reset incidencia {{id_incidenciaFilter}} filter</button>
+        </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th (click)="setOrder('id')">ID
+                <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+              </th>
+              <th (click)="setOrder('fecha')">Fecha</th>
+              <th (click)="setOrder('descripcion')">Descripcion</th>
+              <th (click)="setOrder('incidencia')">incidencia</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let accion of responseFromServer.content">
+              <td>{{accion.id}}</td>
+              <td>{{accion.fecha}}</td>
+              <td>{{accion.descripcion}}</td>
+              <td (click)="setFilterByIncidencia(accion.incidencia.id)">
+                {{accion.incidencia.id}}-{{accion.incidencia.lugar}}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/accion/view',accion.id]">
+                    <fa-icon [icon]="faEye"></fa-icon>
+                  </button>
+                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/accion/edit',accion.id]">
+                    <fa-icon [icon]="faUserPen"></fa-icon>
+                  </button>
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin','accion','remove',accion.id]">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
