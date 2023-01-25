@@ -89,7 +89,6 @@ export class AccionEditAdminRoutedComponent implements OnInit {
         this.oRouter.navigate(['/admin/accion/view', this.id])
       })
       this.myModal.show()
-      this.oLocation.back();
     }
 
     openModalFindIncidencia(): void {

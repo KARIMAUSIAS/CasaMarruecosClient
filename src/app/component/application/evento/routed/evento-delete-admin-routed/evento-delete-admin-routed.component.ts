@@ -1,17 +1,16 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from 'src/app/service/usuario.service';
-import { Location } from '@angular/common';
+import { EventoService } from 'src/app/service/evento.service';
 import { SessionService } from 'src/app/service/session.service';
-
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-usuario-delete-admin-routed',
-  templateUrl: './usuario-delete-admin-routed.component.html',
-  styleUrls: ['./usuario-delete-admin-routed.component.css']
+  selector: 'app-evento-delete-admin-routed',
+  templateUrl: './evento-delete-admin-routed.component.html',
+  styleUrls: ['./evento-delete-admin-routed.component.css']
 })
-export class UsuarioDeleteAdminRoutedComponent implements OnInit {
+export class EventoDeleteAdminRoutedComponent implements OnInit {
 
     id: number = 0;
     msg: string = "";
@@ -20,7 +19,7 @@ export class UsuarioDeleteAdminRoutedComponent implements OnInit {
       protected oLocation: Location,
       private oRouter: Router,
       private oActivatedRoute: ActivatedRoute,
-      private oUsuarioService: UsuarioService,
+      private oEventoService: EventoService,
       private oSessionService: SessionService
     ) {
       this.id = oActivatedRoute.snapshot.params['id'];
@@ -31,9 +30,9 @@ export class UsuarioDeleteAdminRoutedComponent implements OnInit {
     }
 
     removeOne() {
-        this.oUsuarioService.removeOne(this.id).subscribe({
+        this.oEventoService.removeOne(this.id).subscribe({
           next: (data: number) => {
-            this.msg = "Usuario " + this.id + " removed";
+            this.msg = "Evento " + this.id + " removed";
               this.showModal();
           }
         })
@@ -45,9 +44,9 @@ export class UsuarioDeleteAdminRoutedComponent implements OnInit {
           })
           var myModalEl = document.getElementById("removeInfo");
           myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-            this.oRouter.navigate(['/admin/usuario/plist'])
+            this.oRouter.navigate(['/admin/evento/plist'])
           })
           myModal.show()
         }
 
-  }
+}

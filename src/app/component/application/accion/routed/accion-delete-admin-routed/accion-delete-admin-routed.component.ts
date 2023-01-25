@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccionService } from 'src/app/service/accion.service';
 import { SessionService } from 'src/app/service/session.service';
 declare let bootstrap: any;
@@ -17,6 +17,7 @@ export class AccionDeleteAdminRoutedComponent implements OnInit {
 
     constructor(
       protected oLocation: Location,
+      private oRouter: Router,
       private oActivatedRoute: ActivatedRoute,
       private oAccionService: AccionService,
       private oSessionService: SessionService
@@ -32,13 +33,20 @@ export class AccionDeleteAdminRoutedComponent implements OnInit {
       this.oAccionService.removeOne(this.id).subscribe({
         next: (data: number) => {
           this.msg = "Accion " + this.id + " removed";
-          const myModal = new bootstrap.Modal('#removeInfo', {
-            keyboard: false
-          })
-          myModal.show();
-          this.oLocation.back();
+            this.showModal();
         }
       })
     }
+
+    showModal = () => {
+        const myModal = new bootstrap.Modal(document.getElementById("removeInfo"), { //pasar el myModal como parametro
+          keyboard: false
+        })
+        var myModalEl = document.getElementById("removeInfo");
+        myModalEl.addEventListener('hidden.bs.modal', (event): void => {
+          this.oRouter.navigate(['/admin/accion/plist'])
+        })
+        myModal.show()
+      }
 
 }

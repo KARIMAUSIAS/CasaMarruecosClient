@@ -51,6 +51,36 @@
             </div>
           </td>
         </tr>
+        <tr>
+            <th>Accion</th>
+            <td class="text-center">{{nAcciones}}</td>
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+                <button type="button" class="btn btn-success mx-2" (click)="generateAcciones(10)">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
+                  10</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateAcciones(100)">
+                  100</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateAcciones(1000)">
+                  1000</button>
+              </div>
+            </td>
+          </tr>
+        <tr>
+            <th>Evento</th>
+            <td class="text-center">{{nEventos}}</td>
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+                <button type="button" class="btn btn-success mx-2" (click)="generateEventos(10)">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
+                  10</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateEventos(100)">
+                  100</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateEventos(1000)">
+                  1000</button>
+              </div>
+            </td>
+          </tr>
 
       </tbody>
     </table>

@@ -52,7 +52,7 @@ import { IPage } from '../model/generic-types-interface';
     newOne(oAccion2Send: IAccion2Send): Observable<number> {
       return this.oHttp.post<number>(this.url + "/", oAccion2Send,{withCredentials:true});
     }
-    getCountAccions(): Observable<number> {
+    getCountAcciones(): Observable<number> {
       return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
     }
 

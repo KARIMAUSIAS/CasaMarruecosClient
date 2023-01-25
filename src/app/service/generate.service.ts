@@ -20,6 +20,11 @@ export class GenerateService {
     return this.http.post<number>(baseURL + '/incidencia/generate/' + n, { amount: n }, httpOptions);
   }
 
+  generateAcciones(n: number): Observable<number> {
+    return this.http.post<number>(baseURL + '/accion/generate/' + n, { amount: n }, httpOptions);
+  }
 
-
+  generateEventos(n: number): Observable<number> {
+    return this.http.post<number>(baseURL + '/evento/generate/' + n, { amount: n }, httpOptions);
+  }
 }

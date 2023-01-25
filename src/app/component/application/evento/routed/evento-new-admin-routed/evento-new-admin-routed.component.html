@@ -1,0 +1,69 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Alta de Evento</h1>
+
+        <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3 row">
+                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                <div class="col-sm-10">
+                    <p-calendar formControlName="fecha" dateFormat="yy-mm-dd" dataType="string" inputId="spanish" [showIcon]="true"
+                    inputId="spanish"></p-calendar>
+                </div>
+              </div>
+
+          <div class="mb-3 row">
+            <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion</label>
+            <div class="col-sm-4 has-validation">
+              <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['required'] &&
+              oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['minlength']
+                && oForm.controls.descripcion.dirty && !oForm.controls.descripcion.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']
+                ||  oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength'] ||
+                oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']}" id="inputDescripcion"
+                formControlName="descripcion">
+              <div id="inputDescripcionFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['minlength']">
+                La longitud mínima es de 5 caracteres.
+              </div>
+              <div id="inputDescripcionFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['maxlength']">
+                La longitud máxima es de 10 caracteres.
+              </div>
+              <div id="inputDescripcionFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.descripcion.dirty &&  oForm.controls.descripcion.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary"
+            [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          {{modalContent}}
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

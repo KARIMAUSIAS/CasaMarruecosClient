@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SessionService } from 'src/app/service/session.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { Location } from '@angular/common';
@@ -17,6 +17,7 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
 
     constructor(
       protected oLocation: Location,
+      private oRouter: Router,
       private oActivatedRoute: ActivatedRoute,
       private oTipousuarioService: TipousuarioService,
       private oSessionService: SessionService
@@ -29,15 +30,22 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
     }
 
     removeOne() {
-      this.oTipousuarioService.removeOne(this.id).subscribe({
-        next: (data: number) => {
-          this.msg = "Tipo Usuario " + this.id + " removed";
-          const myModal = new bootstrap.Modal('#removeInfo', {
+        this.oTipousuarioService.removeOne(this.id).subscribe({
+          next: (data: number) => {
+            this.msg = "Tipo usuario " + this.id + " removed";
+              this.showModal();
+          }
+        })
+      }
+
+      showModal = () => {
+          const myModal = new bootstrap.Modal(document.getElementById("removeInfo"), { //pasar el myModal como parametro
             keyboard: false
           })
-          myModal.show();
-          this.oLocation.back();
+          var myModalEl = document.getElementById("removeInfo");
+          myModalEl.addEventListener('hidden.bs.modal', (event): void => {
+            this.oRouter.navigate(['/admin/tipousuario/plist'])
+          })
+          myModal.show()
         }
-      })
-    }
 }

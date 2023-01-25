@@ -24,6 +24,11 @@ import { IncidenciaViewAdminRoutedComponent } from './component/application/inci
 import { AccionDeleteAdminRoutedComponent } from './component/application/accion/routed/accion-delete-admin-routed/accion-delete-admin-routed.component';
 import { AccionEditAdminRoutedComponent } from './component/application/accion/routed/accion-edit-admin-routed/accion-edit-admin-routed.component';
 import { AccionNewAdminRoutedComponent } from './component/application/accion/routed/accion-new-admin-routed/accion-new-admin-routed.component';
+import { EventoPlistAdminRoutedComponent } from './component/application/evento/routed/evento-plist-admin-routed/evento-plist-admin-routed.component';
+import { EventoViewAdminRoutedComponent } from './component/application/evento/routed/evento-view-admin-routed/evento-view-admin-routed.component';
+import { EventoDeleteAdminRoutedComponent } from './component/application/evento/routed/evento-delete-admin-routed/evento-delete-admin-routed.component';
+import { EventoEditAdminRoutedComponent } from './component/application/evento/routed/evento-edit-admin-routed/evento-edit-admin-routed.component';
+import { EventoNewAdminRoutedComponent } from './component/application/evento/routed/evento-new-admin-routed/evento-new-admin-routed.component';
 
 
 const routes: Routes = [
@@ -52,6 +57,11 @@ const routes: Routes = [
   { path: 'admin/accion/view/:id', component: AccionViewAdminRoutedComponent },
   { path: 'admin/accion/remove/:id', component: AccionDeleteAdminRoutedComponent },
   { path: 'admin/accion/edit/:id', component: AccionEditAdminRoutedComponent },
+  { path: 'admin/evento/plist', component: EventoPlistAdminRoutedComponent },
+  { path: 'admin/evento/new', component: EventoNewAdminRoutedComponent },
+  { path: 'admin/evento/view/:id', component: EventoViewAdminRoutedComponent },
+  { path: 'admin/evento/remove/:id', component: EventoDeleteAdminRoutedComponent },
+  { path: 'admin/evento/edit/:id', component: EventoEditAdminRoutedComponent },
 ];
 
 @NgModule({

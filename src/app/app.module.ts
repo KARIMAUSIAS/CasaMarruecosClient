@@ -47,6 +47,12 @@ import { AccionDeleteAdminRoutedComponent } from './component/application/accion
 import { AccionEditAdminRoutedComponent } from './component/application/accion/routed/accion-edit-admin-routed/accion-edit-admin-routed.component';
 import { IncidenciaFinderAdminUnroutedComponent } from './component/application/incidencia/unrouted/incidencia-finder-admin-unrouted/incidencia-finder-admin-unrouted.component';
 import { AccionNewAdminRoutedComponent } from './component/application/accion/routed/accion-new-admin-routed/accion-new-admin-routed.component';
+import { EventoPlistAdminRoutedComponent } from './component/application/evento/routed/evento-plist-admin-routed/evento-plist-admin-routed.component';
+import { EventoViewAdminRoutedComponent } from './component/application/evento/routed/evento-view-admin-routed/evento-view-admin-routed.component';
+import { EventoDetailAdminUnroutedComponent } from './component/application/evento/unrouted/evento-detail-admin-unrouted/evento-detail-admin-unrouted.component';
+import { EventoDeleteAdminRoutedComponent } from './component/application/evento/routed/evento-delete-admin-routed/evento-delete-admin-routed.component';
+import { EventoEditAdminRoutedComponent } from './component/application/evento/routed/evento-edit-admin-routed/evento-edit-admin-routed.component';
+import { EventoNewAdminRoutedComponent } from './component/application/evento/routed/evento-new-admin-routed/evento-new-admin-routed.component';
 
 
 @NgModule({
@@ -89,6 +95,12 @@ import { AccionNewAdminRoutedComponent } from './component/application/accion/ro
     AccionEditAdminRoutedComponent,
     IncidenciaFinderAdminUnroutedComponent,
     AccionNewAdminRoutedComponent,
+    EventoPlistAdminRoutedComponent,
+    EventoViewAdminRoutedComponent,
+    EventoDetailAdminUnroutedComponent,
+    EventoDeleteAdminRoutedComponent,
+    EventoEditAdminRoutedComponent,
+    EventoNewAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,

@@ -91,7 +91,7 @@ export class IncidenciaEditAdminRoutedComponent implements OnInit {
         this.oRouter.navigate(['/admin/Incidencia/view', this.id])
       })
       this.myModal.show()
-      this.oLocation.back();
+    
     }
 
     openModalFindUsuario(): void {

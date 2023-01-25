@@ -81,7 +81,6 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
         this.oRouter.navigate(['/admin/tipousuario/view', this.id])
       })
       this.myModal.show()
-      this.oLocation.back();
     }
 
 

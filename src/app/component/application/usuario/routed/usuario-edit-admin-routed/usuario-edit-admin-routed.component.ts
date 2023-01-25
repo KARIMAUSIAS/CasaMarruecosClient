@@ -95,7 +95,6 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
         this.oRouter.navigate(['/admin/Usuario/view', this.id])
       })
       this.myModal.show()
-      this.oLocation.back();
     }
 
     openModalFindTipousuario(): void {

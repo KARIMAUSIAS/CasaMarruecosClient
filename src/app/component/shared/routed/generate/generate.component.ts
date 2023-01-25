@@ -1,3 +1,5 @@
+import { EventoService } from './../../../../service/evento.service';
+import { AccionService } from './../../../../service/accion.service';
 import { IncidenciaService } from './../../../../service/incidencia.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { GenerateService } from './../../../../service/generate.service';
@@ -12,7 +14,9 @@ import { Subject } from 'rxjs';
 })
 export class GenerateComponent implements OnInit {
     nUsuarios: number = 0;
+    nAcciones: number = 0;
     nIncidencias: number = 0;
+    nEventos: number = 0;
     bLoading:boolean=false;
     strResult: string = "";
 
@@ -20,7 +24,9 @@ export class GenerateComponent implements OnInit {
     public oGenerateService: GenerateService,
     public oMetadataService: MetadataService,
     public oUsuarioService: UsuarioService,
-    public oIncidenciaService: IncidenciaService
+    public oIncidenciaService: IncidenciaService,
+    public oAccionService: AccionService,
+    public oEventoService: EventoService,
   ) {
 
   }
@@ -28,6 +34,8 @@ export class GenerateComponent implements OnInit {
   ngOnInit(): void {
     this.getCountUsuarios();
     this.getCountIncidencias();
+    this.getCountAcciones();
+    this.getCountEventos();
   }
 
   generateUsuarios(n: number): void {
@@ -60,6 +68,36 @@ export class GenerateComponent implements OnInit {
       })
   }
 
+  generateAcciones(n: number): void {
+    this.bLoading=true;
+    this.oGenerateService.generateAcciones(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " Acciones";
+        this.bLoading=false;
+        this.getCountAcciones();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.bLoading=false;
+      })
+  }
+
+  generateEventos(n: number): void {
+    this.bLoading=true;
+    this.oGenerateService.generateEventos(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " Eventos";
+        this.bLoading=false;
+        this.getCountEventos();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.bLoading=false;
+      })
+  }
+
   eventsModalSubject: Subject<string> = new Subject<string>();
 
   getCountUsuarios(): void{
@@ -67,6 +105,12 @@ export class GenerateComponent implements OnInit {
   }
   getCountIncidencias(): void{
     this.oIncidenciaService.getCountIncidencias().subscribe((n: number) => this.nIncidencias = n);
+  }
+  getCountEventos(): void{
+    this.oEventoService.getCountEventos().subscribe((n: number) => this.nEventos = n);
+  }
+  getCountAcciones(): void{
+    this.oAccionService.getCountAcciones().subscribe((n: number) => this.nAcciones = n);
   }
 
 }
