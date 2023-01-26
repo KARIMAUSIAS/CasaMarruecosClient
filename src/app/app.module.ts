@@ -53,6 +53,13 @@ import { EventoDetailAdminUnroutedComponent } from './component/application/even
 import { EventoDeleteAdminRoutedComponent } from './component/application/evento/routed/evento-delete-admin-routed/evento-delete-admin-routed.component';
 import { EventoEditAdminRoutedComponent } from './component/application/evento/routed/evento-edit-admin-routed/evento-edit-admin-routed.component';
 import { EventoNewAdminRoutedComponent } from './component/application/evento/routed/evento-new-admin-routed/evento-new-admin-routed.component';
+import { MultimediaPlistAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-plist-admin-routed/multimedia-plist-admin-routed.component';
+import { MultimediaViewAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-view-admin-routed/multimedia-view-admin-routed.component';
+import { MultimediaDetailAdminUnroutedComponent } from './component/application/multimedia/unrouted/multimedia-detail-admin-unrouted/multimedia-detail-admin-unrouted.component';
+import { MultimediaDeleteAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-delete-admin-routed/multimedia-delete-admin-routed.component';
+import { MultimediaEditAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-edit-admin-routed/multimedia-edit-admin-routed.component';
+import { EventoFinderAdminUnroutedComponent } from './component/application/evento/unrouted/evento-finder-admin-unrouted/evento-finder-admin-unrouted.component';
+import { MultimediaNewAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-new-admin-routed/multimedia-new-admin-routed.component';
 
 
 @NgModule({
@@ -101,6 +108,13 @@ import { EventoNewAdminRoutedComponent } from './component/application/evento/ro
     EventoDeleteAdminRoutedComponent,
     EventoEditAdminRoutedComponent,
     EventoNewAdminRoutedComponent,
+    MultimediaPlistAdminRoutedComponent,
+    MultimediaViewAdminRoutedComponent,
+    MultimediaDetailAdminUnroutedComponent,
+    MultimediaDeleteAdminRoutedComponent,
+    MultimediaEditAdminRoutedComponent,
+    EventoFinderAdminUnroutedComponent,
+    MultimediaNewAdminRoutedComponent,
   ],
   imports: [
     BrowserModule,
