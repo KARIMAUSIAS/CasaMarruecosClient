@@ -26,7 +26,6 @@ export class MultimediaDeleteAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.oSessionService.check;
     }
 
     removeOne() {

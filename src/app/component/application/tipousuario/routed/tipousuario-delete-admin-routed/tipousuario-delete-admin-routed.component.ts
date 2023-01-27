@@ -26,7 +26,6 @@ export class TipousuarioDeleteAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.oSessionService.check;
     }
 
     removeOne() {

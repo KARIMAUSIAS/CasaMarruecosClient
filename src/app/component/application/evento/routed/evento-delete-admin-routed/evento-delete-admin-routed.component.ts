@@ -26,7 +26,6 @@ export class EventoDeleteAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.oSessionService.check;
     }
 
     removeOne() {

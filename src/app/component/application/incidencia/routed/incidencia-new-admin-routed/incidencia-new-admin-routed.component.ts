@@ -38,7 +38,6 @@ export class IncidenciaNewAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.oSessionService.check;
       this.oForm = <FormGroup>this.oFormBuilder.group({
         id: [''],
         lugar: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],

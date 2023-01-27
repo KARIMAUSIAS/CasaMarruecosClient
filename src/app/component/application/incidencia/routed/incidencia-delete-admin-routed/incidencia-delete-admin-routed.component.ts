@@ -26,7 +26,6 @@ export class IncidenciaDeleteAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.oSessionService.check;
     }
 
     removeOne() {

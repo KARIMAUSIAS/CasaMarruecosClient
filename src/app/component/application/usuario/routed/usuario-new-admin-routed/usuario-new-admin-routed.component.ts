@@ -38,7 +38,6 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.oSessionService.check;
       this.oForm = <FormGroup>this.oFormBuilder.group({
         id: [''],
         nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],

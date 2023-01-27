@@ -35,27 +35,27 @@ export class UsuarioService {
         params = params.set("sort", strSortField);
       }
     }
-    return this.oHttp.get<IPage<IUsuario>>(this.url, {withCredentials:true, params: params });
+    return this.oHttp.get<IPage<IUsuario>>(this.url, { params: params });
   }
 
   getOne(id: number): Observable<IUsuario> {
-    return this.oHttp.get<IUsuario>(this.url + "/" + id,{withCredentials:true});
+    return this.oHttp.get<IUsuario>(this.url + "/" + id);
   }
 
   removeOne(id: number): Observable<number> {
-    return this.oHttp.delete<number>(this.url + '/' + id,{withCredentials:true});
+    return this.oHttp.delete<number>(this.url + '/' + id);
   }
 
   updateOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.put<number>(this.url + "/", oUsuario2Send,{withCredentials:true});
+    return this.oHttp.put<number>(this.url + "/", oUsuario2Send);
   }
 
 
   newOne(oUsuario2Send: IUsuario2Send): Observable<number> {
-    return this.oHttp.post<number>(this.url + "/", oUsuario2Send,{withCredentials:true});
+    return this.oHttp.post<number>(this.url + "/", oUsuario2Send);
   }
   getCountUsuarios(): Observable<number> {
-    return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
+    return this.oHttp.get<number>(this.url + "/count");
   }
 
 }

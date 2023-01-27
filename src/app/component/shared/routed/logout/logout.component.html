@@ -1,18 +1,18 @@
-<div class="row justify-content-center">
-    <div class="col-md-5 control-group text-center my-3">
-        <div class="alert alert-danger" role="alert">
-
-            <h3 class="">Are you sure to logout?</h3>
-
-            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-                <button class="btn btn-warning mx-1" (click)="closeSession()"><i
-                        [ngClass]="oMetadataService.getIcon('logout')"></i> Close session</button>
-                <a class="btn btn-primary mx-1" [routerLink]="['/home']"><i
-                        [ngClass]="oMetadataService.getIcon('home')"></i> Go to home</a>
-                <button class="btn btn-primary mx-1" (click)="oLocation.back()"><i
-                        [ngClass]="oMetadataService.getIcon('return')"></i> Return backs</button>
+<div class="container mt-5">
+    <div class="row  justify-content-center">
+      <div class="col-6">
+        <h1 class="text-center mb-5">Salida del sistema</h1>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">¿Está seguro de que desea salir del sistema?</h5>
+            <p class="card-text">Si lo hace, deberá volver a iniciar sesión para acceder al sistema.</p>
+            <div class="text-center">
+              <a href="#" class="btn btn-primary m-1" routerLink="/home">Cancelar</a>
+              <a href="#" class="btn btn-warning m-1" routerLink="/login" (click)="logout()">Salir</a>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 

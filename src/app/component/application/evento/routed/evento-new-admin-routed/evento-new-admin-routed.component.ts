@@ -37,7 +37,6 @@ export class EventoNewAdminRoutedComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.oSessionService.check;
       this.oForm = <FormGroup>this.oFormBuilder.group({
         id: [''],
         fecha: ['', [Validators.required]],

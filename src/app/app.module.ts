@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
 import { LoginComponent } from './component/shared/routed/login/login.component';
 import { MenuComponent } from './component/shared/unrouted/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './component/shared/unrouted/pagination/pagination.component';
 import { SearchUnroutedComponent } from './component/shared/unrouted/search-unrouted/search-unrouted.component';
 import { DropdownRegisterPageComponent } from './component/shared/unrouted/dropdown-register-page/dropdown-register-page.component';
@@ -60,6 +60,7 @@ import { MultimediaDeleteAdminRoutedComponent } from './component/application/mu
 import { MultimediaEditAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-edit-admin-routed/multimedia-edit-admin-routed.component';
 import { EventoFinderAdminUnroutedComponent } from './component/application/evento/unrouted/evento-finder-admin-unrouted/evento-finder-admin-unrouted.component';
 import { MultimediaNewAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-new-admin-routed/multimedia-new-admin-routed.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -129,7 +130,8 @@ import { MultimediaNewAdminRoutedComponent } from './component/application/multi
   providers: [
     CryptoService,
     DecodeService,
-    PaginationService
+    PaginationService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
