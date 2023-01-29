@@ -51,7 +51,7 @@ import { IMultimedia, IMultimedia2Send } from "../model/multimedia-interface";
     newOne(oMultimedia2Send: IMultimedia2Send): Observable<number> {
       return this.oHttp.post<number>(this.url + "/", oMultimedia2Send,{withCredentials:true});
     }
-    getCountMultimediaes(): Observable<number> {
+    getCountMultimedias(): Observable<number> {
       return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
     }
 

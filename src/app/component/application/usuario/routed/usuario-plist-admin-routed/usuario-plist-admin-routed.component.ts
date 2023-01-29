@@ -58,17 +58,19 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
     setRpp(rpp: number) {
       this.numberOfElements = rpp;
-      this.setPage(1);
+      this.setPage(0);
       this.getPage();
     }
 
     setFilter(term: string): void {
       this.strTermFilter = term;
+      this.setPage(0);
       this.getPage();
     }
 
     setFilterByTipousuario(id: number): void {
       this.id_tipousuarioFilter = id;
+      this.setPage(0);
       this.getPage();
     }
 

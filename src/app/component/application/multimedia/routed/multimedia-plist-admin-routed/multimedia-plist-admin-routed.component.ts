@@ -58,17 +58,19 @@ export class MultimediaPlistAdminRoutedComponent implements OnInit {
 
     setRpp(rpp: number) {
       this.numberOfElements = rpp;
-      this.setPage(1);
+      this.setPage(0);
       this.getPage();
     }
 
     setFilter(term: string): void {
       this.strTermFilter = term;
+      this.setPage(0);
       this.getPage();
     }
 
     setFilterByEvento(id: number): void {
       this.id_eventoFilter = id;
+      this.setPage(0);
       this.getPage();
     }
 

@@ -27,4 +27,7 @@ export class GenerateService {
   generateEventos(n: number): Observable<number> {
     return this.http.post<number>(baseURL + '/evento/generate/' + n, { amount: n }, httpOptions);
   }
+  generateMultimedias(n: number): Observable<number> {
+    return this.http.post<number>(baseURL + '/multimedia/generate/' + n, { amount: n }, httpOptions);
+  }
 }

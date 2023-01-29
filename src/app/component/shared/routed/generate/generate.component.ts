@@ -6,6 +6,7 @@ import { GenerateService } from './../../../../service/generate.service';
 import { Component, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Subject } from 'rxjs';
+import { MultimediaService } from 'src/app/service/multimedia.service';
 
 @Component({
   selector: 'app-generate',
@@ -17,6 +18,7 @@ export class GenerateComponent implements OnInit {
     nAcciones: number = 0;
     nIncidencias: number = 0;
     nEventos: number = 0;
+    nMultimedias: number = 0;
     bLoading:boolean=false;
     strResult: string = "";
 
@@ -27,6 +29,7 @@ export class GenerateComponent implements OnInit {
     public oIncidenciaService: IncidenciaService,
     public oAccionService: AccionService,
     public oEventoService: EventoService,
+    public oMultimediaService: MultimediaService,
   ) {
 
   }
@@ -36,6 +39,7 @@ export class GenerateComponent implements OnInit {
     this.getCountIncidencias();
     this.getCountAcciones();
     this.getCountEventos();
+    this.getCountMultimedias();
   }
 
   generateUsuarios(n: number): void {
@@ -97,6 +101,20 @@ export class GenerateComponent implements OnInit {
         this.bLoading=false;
       })
   }
+  generateMultimedias(n: number): void {
+    this.bLoading=true;
+    this.oGenerateService.generateMultimedias(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " Multimedias";
+        this.bLoading=false;
+        this.getCountMultimedias();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.bLoading=false;
+      })
+  }
 
   eventsModalSubject: Subject<string> = new Subject<string>();
 
@@ -111,6 +129,9 @@ export class GenerateComponent implements OnInit {
   }
   getCountAcciones(): void{
     this.oAccionService.getCountAcciones().subscribe((n: number) => this.nAcciones = n);
+  }
+  getCountMultimedias(): void{
+    this.oMultimediaService.getCountMultimedias().subscribe((n: number) => this.nMultimedias = n);
   }
 
 }
