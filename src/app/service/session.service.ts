@@ -1,9 +1,8 @@
 import { IToken } from './../model/token-interface';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject, throwError, catchError, retry, tap, filter, map, Subscription } from 'rxjs';
+import { Observable, Subject, filter, map, Subscription } from 'rxjs';
 import { baseURL, httpOptions } from 'src/environments/environment';
-import { environment } from 'src/environments/environment.prod';
 import { CryptoService } from './crypto.service';
 import { DecodeService } from './decode.service';
 
@@ -62,6 +61,15 @@ export class SessionService {
             }
         } else {
             return false;
+        }
+    }
+
+    getTipousuario(): string {
+        if (!this.isSessionActive()) {
+            return "";
+        } else {
+            let token: string = localStorage.getItem("token");
+            return this.oDecodeService.parseJwt(token).tipousuario;
         }
     }
 

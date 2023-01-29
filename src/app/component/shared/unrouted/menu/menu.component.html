@@ -10,38 +10,37 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="login"
-            *ngIf="!strUserName">Login</a>
+        <li class="nav-item" *ngIf="!strUserName">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="login">Login</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" >
             <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="logout">Logout</a>
           </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
           <a class="nav-link" aria-current="page" routerLinkActive="active"
             routerLink="admin/usuario/plist">Usuarios</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="admin/tipousuario/plist">Tipo Usuario</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="admin/incidencia/plist">Incidencias</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="admin/accion/plist">Acciones</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="admin/evento/plist">Eventos</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="admin/multimedia/plist">Multimedias</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="strTipousuario=='1'">
             <a class="nav-link" aria-current="page" routerLinkActive="active"
               routerLink="generate">Generate</a>
         </li>
