@@ -1,9 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faArrowDown, faArrowUp, faEye, faTrash, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { IPage } from 'src/app/model/generic-types-interface';
+import { ITipousuario } from 'src/app/model/tipousuario-interface';
 import { IUsuario } from 'src/app/model/usuario-interface';
+import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-usuario-plist-admin-routed',
@@ -12,6 +15,13 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
+
+    id_usuario: number =1;
+    msg: string = "";
+    mimodal: string = "miModal";
+    myModal: any;
+    modalTitle: string = "";
+    modalContent: string = "";
     responseFromServer: IPage<IUsuario>;
     //
     strTermFilter: string = "";
@@ -28,7 +38,7 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
     faArrowDown = faArrowDown;
 
     constructor(
-      private oUsuarioService: UsuarioService
+      private oUsuarioService: UsuarioService,
     ) { }
 
     ngOnInit() {
@@ -83,5 +93,33 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
       }
       this.getPage();
     }
+
+        closeParticipacionModal() {
+          this.myModal.hide();
+        }
+
+        openModalParticipacion(id: number, participaciones: number): void {
+            if(participaciones != 0){
+                this.myModal = new bootstrap.Modal(document.getElementById("openParticipacion"), { //pasar el myModal como parametro
+                    keyboard: false
+                  })
+                this.id_usuario = id;
+              }else{
+                this.msg = "No participa en eventos";
+                this.myModal = null;
+              this.showModal2();
+              }
+          this.myModal.show()
+
+        }
+        showModal2 = () => {
+            const myModal = new bootstrap.Modal(document.getElementById("Info"), { //pasar el myModal como parametro
+              keyboard: false
+            })
+            var myModalEl = document.getElementById("Info");
+            myModalEl.addEventListener('hidden.bs.modal', (event): void => {
+            })
+            myModal.show()
+          }
 
   }

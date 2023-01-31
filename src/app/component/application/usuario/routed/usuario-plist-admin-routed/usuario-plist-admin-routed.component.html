@@ -37,6 +37,7 @@
               <th (click)="setOrder('email')">Email</th>
               <th (click)="setOrder('usuario')">Usuario</th>
               <th (click)="setOrder('tipousuario')">Tipo Usuario</th>
+              <th (click)="setOrder('participaciones')">Participaciones</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -50,6 +51,8 @@
               <td>{{usuario.usuario}}</td>
               <td (click)="setFilterByTipousuario(usuario.tipousuario.id)">
                 {{usuario.tipousuario.id}}-{{usuario.tipousuario.nombre}}</td>
+                <td>{{usuario.participaciones}}
+                <button class="btn btn-sm btn-primary float-end" (click)="openModalParticipacion(usuario.id, usuario.participaciones)">Abrir Lista</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/usuario/view',usuario.id]">
@@ -66,6 +69,42 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">CasaMarruecos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{msg}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="openParticipacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <app-participacion-plistevento-admin-unrouted [id]="id_usuario" (click)="closeParticipacionModal"></app-participacion-plistevento-admin-unrouted>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>

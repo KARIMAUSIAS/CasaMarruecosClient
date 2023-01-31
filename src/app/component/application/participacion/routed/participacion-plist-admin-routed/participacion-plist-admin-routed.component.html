@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de participacions</h1>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <app-search-unrouted [placeHolder]="'Buscar participacion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-start">
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_eventoFilter!=0" (click)="setFilterByEvento(0)">
+            <i class="bi bi-x-circle"></i> Reset Evento {{id_eventoFilter}} filter</button>
+            <button class="btn btn-outline-danger" *ngIf="id_usuarioFilter!=0" (click)="setFilterByUsuario(0)">
+            <i class="bi bi-x-circle"></i> Reset Usuario {{id_usuarioFilter}} filter</button>
+        </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th (click)="setOrder('id')">ID
+                <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+              </th>
+              <th (click)="setOrder('usuario')">Usuario</th>
+              <th (click)="setOrder('evento')">Evento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let participacion of responseFromServer.content">
+              <td>{{participacion.id}}</td>
+              <td (click)="setFilterByUsuario(participacion.usuario.id)">
+                {{participacion.usuario.id}}-{{participacion.usuario.usuario}}</td>
+              <td (click)="setFilterByEvento(participacion.evento.id)">
+                {{participacion.evento.id}}-{{participacion.evento.fecha}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

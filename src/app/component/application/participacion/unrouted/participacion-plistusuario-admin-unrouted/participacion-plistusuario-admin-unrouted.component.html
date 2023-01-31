@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de usuarios</h1>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th (click)="setOrder('usuario.id')">ID
+                    <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                    <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+                  </th>
+                  <th (click)="setOrder('usuario.nombre')">Nombre
+                    <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+                    <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+                  </th>
+                  <th (click)="setOrder('usuario.apellido1')">Apellido1</th>
+                  <th (click)="setOrder('usuario.apellido2')">Apellido2</th>
+                  <th (click)="setOrder('usuario.email')">Email</th>
+                  <th (click)="setOrder('usuario.usuario')">Usuario</th>
+                  <th (click)="setOrder('usuario.tipousuario')">Tipo Usuario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let participacion of responseFromServer.content">
+                    <td>{{participacion.usuario.id}}</td>
+                    <td>{{participacion.usuario.nombre}}</td>
+                    <td>{{participacion.usuario.apellido1}}</td>
+                    <td>{{participacion.usuario.apellido2}}</td>
+                    <td>{{participacion.usuario.email}}</td>
+                    <td>{{participacion.usuario.usuario}}</td>
+                    <td (click)="setFilterByTipousuario(participacion.usuario.tipousuario.id)">
+                      {{participacion.usuario.tipousuario.id}}-{{participacion.usuario.tipousuario.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

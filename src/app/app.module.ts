@@ -61,6 +61,9 @@ import { MultimediaEditAdminRoutedComponent } from './component/application/mult
 import { EventoFinderAdminUnroutedComponent } from './component/application/evento/unrouted/evento-finder-admin-unrouted/evento-finder-admin-unrouted.component';
 import { MultimediaNewAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-new-admin-routed/multimedia-new-admin-routed.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ParticipacionPlistAdminRoutedComponent } from './component/application/participacion/routed/participacion-plist-admin-routed/participacion-plist-admin-routed.component';
+import { ParticipacionPlistusuarioAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistusuario-admin-unrouted/participacion-plistusuario-admin-unrouted.component';
+import { ParticipacionPlisteventoAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistevento-admin-unrouted/participacion-plistevento-admin-unrouted.component';
 
 
 @NgModule({
@@ -116,6 +119,9 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     MultimediaEditAdminRoutedComponent,
     EventoFinderAdminUnroutedComponent,
     MultimediaNewAdminRoutedComponent,
+    ParticipacionPlistAdminRoutedComponent,
+    ParticipacionPlistusuarioAdminUnroutedComponent,
+    ParticipacionPlisteventoAdminUnroutedComponent,
   ],
   imports: [
     BrowserModule,
