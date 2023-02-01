@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
     private oSessionService: SessionService,
   ) {
     this.strUserName = this.oSessionService.getUserName();
+    this.strTipousuario = this.oSessionService.getTipousuario();
   }
 
   ngOnInit() {

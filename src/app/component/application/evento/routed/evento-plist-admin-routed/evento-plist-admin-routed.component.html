@@ -25,7 +25,7 @@
               </th>
               <th (click)="setOrder('fecha')">Fecha</th>
               <th (click)="setOrder('descripcion')">Descripcion</th>
-              <th>Usuarios</th>
+              <th>eventos</th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@
               <td>{{evento.id}}</td>
               <td>{{evento.fecha}}</td>
               <td>{{evento.descripcion}}</td>
-              <td (click)="openModalParticipacion(evento.id, evento.participaciones)">{{evento.participaciones}}</td>
+              <td>{{evento.participaciones}} <button class="btn btn-sm btn-primary float-end" (click)="openModalParticipacion(evento.id, evento.participaciones)">Abrir Lista</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/evento/view',evento.id]">

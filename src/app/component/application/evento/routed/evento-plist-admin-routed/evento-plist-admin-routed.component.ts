@@ -13,7 +13,7 @@ declare let bootstrap: any;
 })
 export class EventoPlistAdminRoutedComponent implements OnInit {
 
-    id_evento: number = null;
+    id_evento: number = 1;
     msg: string = "";
     mimodal: string = "miModal";
     myModal: any;
