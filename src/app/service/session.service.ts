@@ -46,6 +46,10 @@ export class SessionService {
         }
     }
 
+    getUserId(): Observable<number> {
+        return this.oHttpClient.get<number>(this.sURL + "/getId");
+      }
+
     getToken(): string {
         return localStorage.getItem("token");
     }

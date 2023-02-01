@@ -10,12 +10,14 @@ export class MenuComponent implements OnInit {
 
   strUserName: string = "";
   strTipousuario: string = "";
+  strUsuarioId: number = 0;
 
   constructor(
     private oSessionService: SessionService,
   ) {
     this.strUserName = this.oSessionService.getUserName();
     this.strTipousuario = this.oSessionService.getTipousuario();
+    this.oSessionService.getUserId().subscribe((n: number) => this.strUsuarioId = n);
   }
 
   ngOnInit() {
@@ -23,12 +25,14 @@ export class MenuComponent implements OnInit {
         (data: string) => {
           this.strUserName = this.oSessionService.getUserName();
           this.strTipousuario = this.oSessionService.getTipousuario();
-          console.log(this.strTipousuario);
+          this.oSessionService.getUserId().subscribe((n: number) => this.strUsuarioId = n);
+          console.log(this.strUsuarioId);
         });
       this.oSessionService.on(Events.logout).subscribe(
         (data: string) => {
           this.strUserName = '';
           this.strTipousuario = "";
+          this.strUsuarioId = 0;
         });
   }
 
