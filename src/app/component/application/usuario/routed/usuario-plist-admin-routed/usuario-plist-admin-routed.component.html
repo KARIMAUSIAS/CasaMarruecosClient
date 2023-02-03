@@ -51,8 +51,8 @@
               <td>{{usuario.usuario}}</td>
               <td (click)="setFilterByTipousuario(usuario.tipousuario.id)">
                 {{usuario.tipousuario.id}}-{{usuario.tipousuario.nombre}}</td>
-                <td>{{usuario.participaciones}}
-                <button class="btn btn-sm btn-primary float-end" (click)="openModalParticipacion(usuario.id, usuario.participaciones)">Abrir Lista</button></td>
+                <td><button class="btn btn-outline-secondary btn-sm" (click)="openModalParticipacion(usuario.id, usuario.participaciones)"
+                        [disabled]="usuario.participaciones<=0">{{usuario.participaciones}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/usuario/view',usuario.id]">

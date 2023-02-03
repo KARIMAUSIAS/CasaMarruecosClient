@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { IMultimedia } from 'src/app/model/multimedia-interface';
@@ -28,8 +29,16 @@ export class MultimediaPlistAdminRoutedComponent implements OnInit {
     faArrowDown = faArrowDown;
 
     constructor(
-      private oMultimediaService: MultimediaService
-    ) { }
+      private oMultimediaService: MultimediaService,
+      private oActivatedRoute: ActivatedRoute,
+      ) {
+          const id_evento =  this.oActivatedRoute.snapshot.params['id_evento'];
+          if(id_evento == null){
+              this.id_eventoFilter = 0;
+          }else{
+              this.id_eventoFilter = id_evento;
+          }
+        }
 
     ngOnInit() {
       this.getPage();

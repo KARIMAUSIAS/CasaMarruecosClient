@@ -36,6 +36,7 @@
               <th (click)="setOrder('descripcion')">Descripcion</th>
               <th (click)="setOrder('usuario')">Usuario</th>
               <th>Acciones</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +47,8 @@
               <td>{{incidencia.descripcion}}</td>
               <td (click)="setFilterByUsuario(incidencia.usuario.id)">
                 {{incidencia.usuario.id}}-{{incidencia.usuario.usuario}}</td>
+                <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','accion','plist','incidencia',incidencia.id]"
+                    [disabled]="incidencia.acciones<=0">{{incidencia.acciones}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/incidencia/view',incidencia.id]">

@@ -5,6 +5,7 @@ export interface IEvento {
     descripcion: string;
     fecha: Date;
     participaciones: number;
+    multimedias: number;
 }
 
 export interface IEvento2Form {

@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IAccion } from 'src/app/model/accion-interface';
 import { IPage } from 'src/app/model/generic-types-interface';
@@ -28,8 +29,16 @@ export class AccionPlistAdminRoutedComponent implements OnInit {
     faArrowDown = faArrowDown;
 
     constructor(
-      private oAccionService: AccionService
-    ) { }
+      private oAccionService: AccionService,
+      private oActivatedRoute: ActivatedRoute,
+    ) {
+        const id_incidencia =  this.oActivatedRoute.snapshot.params['id_incidencia'];
+        if(id_incidencia == null){
+            this.id_incidenciaFilter = 0;
+        }else{
+            this.id_incidenciaFilter = id_incidencia;
+        }
+    }
 
     ngOnInit() {
       this.getPage();
