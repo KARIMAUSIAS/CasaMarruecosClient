@@ -31,7 +31,8 @@
             <tr *ngFor="let tipousuario of this.getPlistContent()">
               <td>{{tipousuario.id}}</td>
               <td>{{tipousuario.nombre}}</td>
-              <td>{{tipousuario.usuarios}}</td>
+              <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','usuario','plist','tipousuario',tipousuario.id]"
+                [disabled]="tipousuario.usuarios<=0">{{tipousuario.usuarios}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                     <button class="btn btn-sm btn-primary" [routerLink]="['/admin/tipousuario/view',tipousuario.id]">

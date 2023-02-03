@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faArrowDown, faArrowUp, faEye, faTrash, faUserPen } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +26,7 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
     responseFromServer: IPage<IUsuario>;
     //
     strTermFilter: string = "";
-    id_tipousuarioFilter: number = 0;
+    id_tipousuarioFilter: number = null;
     numberOfElements: number = 5;
     page: number = 0;
     sortField: string = "";
@@ -39,7 +40,15 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
     constructor(
       private oUsuarioService: UsuarioService,
-    ) { }
+      private oActivatedRoute: ActivatedRoute,
+    ) {
+        const id_tipousuario =  this.oActivatedRoute.snapshot.params['id_tipousuario'];
+        if(id_tipousuario == null){
+            this.id_tipousuarioFilter = 0;
+        }else{
+            this.id_tipousuarioFilter = id_tipousuario;
+        }
+     }
 
     ngOnInit() {
       this.getPage();
