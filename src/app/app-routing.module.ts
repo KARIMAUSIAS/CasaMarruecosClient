@@ -1,3 +1,4 @@
+import { EventoPlistUserRoutedComponent } from './component/application/evento/routed/user/evento-plist-user-routed/evento-plist-user-routed.component';
 import { AccionViewAdminRoutedComponent } from './component/application/accion/routed/accion-view-admin-routed/accion-view-admin-routed.component';
 import { AccionPlistAdminRoutedComponent } from './component/application/accion/routed/accion-plist-admin-routed/accion-plist-admin-routed.component';
 import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-admin-routed/tipousuario-edit-admin-routed.component';
@@ -74,6 +75,8 @@ const routes: Routes = [
   { path: 'admin/evento/view/:id', component: EventoViewAdminRoutedComponent },
   { path: 'admin/evento/remove/:id', component: EventoDeleteAdminRoutedComponent },
   { path: 'admin/evento/edit/:id', component: EventoEditAdminRoutedComponent },
+
+  { path: 'user/evento/plist', component: EventoPlistUserRoutedComponent },
 
   { path: 'admin/multimedia/plist', component: MultimediaPlistAdminRoutedComponent },
   { path: 'admin/multimedia/plist/evento/:id_evento', component: MultimediaPlistAdminRoutedComponent },

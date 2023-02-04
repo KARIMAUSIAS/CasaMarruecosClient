@@ -64,6 +64,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ParticipacionPlistAdminRoutedComponent } from './component/application/participacion/routed/participacion-plist-admin-routed/participacion-plist-admin-routed.component';
 import { ParticipacionPlistusuarioAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistusuario-admin-unrouted/participacion-plistusuario-admin-unrouted.component';
 import { ParticipacionPlisteventoAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistevento-admin-unrouted/participacion-plistevento-admin-unrouted.component';
+import { EventoPlistUserRoutedComponent } from './component/application/evento/routed/user/evento-plist-user-routed/evento-plist-user-routed.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { ParticipacionPlisteventoAdminUnroutedComponent } from './component/appl
     ParticipacionPlistAdminRoutedComponent,
     ParticipacionPlistusuarioAdminUnroutedComponent,
     ParticipacionPlisteventoAdminUnroutedComponent,
+    EventoPlistUserRoutedComponent,
   ],
   imports: [
     BrowserModule,

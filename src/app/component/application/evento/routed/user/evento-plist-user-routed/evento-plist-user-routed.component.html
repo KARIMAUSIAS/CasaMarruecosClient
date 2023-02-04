@@ -1,0 +1,23 @@
+<div class="card-wrap">
+    <article class="card" *ngFor="let evento of responseFromServer.content">
+        <header class="header-card">
+            <img src="../../../../../../../assets/fondomarruecos.jpg" alt="" />
+        </header>
+        <footer class="footer-card">
+            <div class="categoria-card">
+                <span *ngIf="fechaisLater(evento.fecha)">Disponible</span>
+                <span class="cerrado"
+                *ngIf="!fechaisLater(evento.fecha)">Cerrado</span>
+            </div>
+            <div class="texto-card">
+                <h3>{{ evento.fecha }}</h3>
+                <p>
+                    {{evento.descripcion}}
+                </p>
+            </div>
+            <div class="boton-perfil-card">
+                <a class="btn btn-primary">Unirse</a>
+            </div>
+        </footer>
+    </article>
+</div>
