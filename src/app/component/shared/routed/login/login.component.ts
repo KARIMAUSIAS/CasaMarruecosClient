@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
 
 
       this.oFormularioLogin = <FormGroup>this.oFormBuilder.group({
-        username: ['', [Validators.required, Validators.minLength(5)]],
-        password: ['', [Validators.required, Validators.minLength(5)]]
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]]
       });
 
     }
