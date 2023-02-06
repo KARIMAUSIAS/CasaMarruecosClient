@@ -47,3 +47,7 @@ article.card{
     display: flex;
     flex-flow: wrap;
 }
+.boton-perfil-card{
+    float: right;
+    margin-bottom: 6px;
+}
