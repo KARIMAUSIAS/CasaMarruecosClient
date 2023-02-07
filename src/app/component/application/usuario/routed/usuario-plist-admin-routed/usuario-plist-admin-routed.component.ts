@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { faArrowDown, faArrowUp, faEye, faTrash, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { ITipousuario } from 'src/app/model/tipousuario-interface';
@@ -12,7 +12,9 @@ declare let bootstrap: any;
 @Component({
   selector: 'app-usuario-plist-admin-routed',
   templateUrl: './usuario-plist-admin-routed.component.html',
-  styleUrls: ['./usuario-plist-admin-routed.component.css']
+  styleUrls: ['./usuario-plist-admin-routed.component.css'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class UsuarioPlistAdminRoutedComponent implements OnInit {
 

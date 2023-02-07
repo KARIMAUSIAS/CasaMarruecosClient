@@ -1,15 +1,16 @@
   .mobile-screen{
-    position: absolute;
-    margin: auto;
+    margin-top: 5%;
+    margin-right: 10%;
     top: 0; left: 0; bottom: 0; right: 0;
     width: 300px;
     height: 500px;
     background: rgba(3,3,3,.7);
     overflow: hidden;
+    float: right;
   }
 
   .header{
-    position: relative;
+
     margin: 0;
     padding: 0;
     width: 100%;
@@ -27,12 +28,12 @@
   }
 
   .logo{
-    position: relative;
+
     top: 30px;
     width: 150px;
     height: 150px;
     margin: auto;
-    background: url("../../../../../assets/casamarruecos.jpg") no-repeat center;
+    background: url("../../../../../assets/casamarruecos.png") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -44,7 +45,7 @@
   }
 
   form{
-    position: absolute;
+
     bottom: 50px;
     width: 100%;
   }
@@ -52,7 +53,7 @@
   input,
   .login-btn{
     font-family: 'Open Sans', sans-serif;
-    position: relative;
+
     display: block;
     margin: 20px auto;
     padding: 10px;
@@ -94,48 +95,6 @@
     background: #09a9d0;
     color: #fff;
   }
-
-  .other-options{
-    position: absolute;
-    width: 100%;
-    height: 30px;
-    bottom: 2px;
-    left: 0;
-  }
-
-  .option{
-    position: relative;
-    display: block;
-    float: right;
-    width: 45%;
-    margin: auto;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    background: rgba(0,0,0,.2);
-    border-bottom: 2px solid  rgb(225, 40, 54);
-    cursor: pointer;
-  }
-
-  .option:first-child{
-    float: left;
-    left: 3.3%;
-  }
-
-  .option:last-child{
-    margin-right: 3.3%;
-  }
-
-  .option-text{
-    position: relative;
-    margin: 0;
-    line-height: 30px;
-    color: #ccc;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 100;
-  }
-
 
   .login-btn{
     background-color: #222543;

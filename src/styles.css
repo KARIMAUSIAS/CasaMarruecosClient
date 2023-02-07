@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 .table {
  font-size: 0.9rem;
+ font-weight: bold;
+}
+
+body:nth-child(1){
+    background-color: #a87cd4;
 }
 
 

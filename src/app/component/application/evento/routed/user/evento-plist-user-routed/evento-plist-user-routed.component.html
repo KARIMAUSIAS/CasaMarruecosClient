@@ -1,4 +1,5 @@
-<div class="card-wrap">
+<div class="fondo">
+<div class="card-wrap mx-5">
     <article class="card" *ngFor="let evento of responseFromServer.content">
         <header class="header-card">
             <img src="../../../../../../../assets/fondomarruecos.jpg" alt="" />
@@ -16,8 +17,10 @@
                 </p>
             </div>
             <div class="boton-perfil-card">
-                <a class="btn btn-primary">Unirse</a>
+                <a class="btn btn-primary" *ngIf="fechaisLater(evento.fecha)">Unirse</a>
             </div>
         </footer>
     </article>
 </div>
+</div>
+

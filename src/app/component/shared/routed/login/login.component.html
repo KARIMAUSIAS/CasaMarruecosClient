@@ -1,22 +1,24 @@
-<div class="mobile-screen">
-    <div class="header">
-      <h1>Inicio de sesión</h1>
+<div class="fondo">
+    <div class="mobile-screen">
+        <div class="header">
+            <h1>Inicio de sesión</h1>
+        </div>
+
+        <div class="logo">
+        </div>
+
+
+        <form id="login-form" [formGroup]="oFormularioLogin" (ngSubmit)="login()">
+            <div class="form-outline mb-4">
+                <input type="text" id="username" class="form-control" placeholder="Enter a username" name="username"
+                    formControlName="username" />
+            </div>
+            <div class="form-outline mb-3">
+                <input type="password" id="password" class="form-control" placeholder="Enter password" name="password"
+                    formControlName="password" />
+            </div>
+            <button (click)="login()" class="login-btn">Iniciar sesión</button>
+        </form>
+
     </div>
-
-    <div class="logo">
-    </div>
-
-
-    <form id="login-form" [formGroup]="oFormularioLogin">
-        <div class="form-outline mb-4">
-            <input type="text" id="username" class="form-control" placeholder="Enter a username" name="username"
-              formControlName="username" />
-          </div>
-          <div class="form-outline mb-3">
-            <input type="password" id="password" class="form-control" placeholder="Enter password" name="password"
-              formControlName="password" />
-          </div>
-      <button (click)="login()"  class="login-btn">Iniciar sesión</button>
-    </form>
-
-  </div>
+</div>

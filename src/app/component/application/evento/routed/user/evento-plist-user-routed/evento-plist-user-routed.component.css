@@ -46,8 +46,12 @@ article.card{
 .card-wrap{
     display: flex;
     flex-flow: wrap;
+    gap: 3%;
 }
 .boton-perfil-card{
     float: right;
     margin-bottom: 6px;
+}
+.fondo{
+    background-color: #968ca4;
 }
