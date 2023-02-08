@@ -47,6 +47,7 @@ article.card{
     display: flex;
     flex-flow: wrap;
     gap: 3%;
+    justify-content: center;
 }
 .boton-perfil-card{
     float: right;

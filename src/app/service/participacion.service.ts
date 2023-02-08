@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { baseURL } from "src/environments/environment";
 import { IPage } from "../model/generic-types-interface";
-import { IParticipacion } from "../model/participacion-interface";
+import { IParticipacion, IParticipacion2Send } from "../model/participacion-interface";
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +17,14 @@ import { IParticipacion } from "../model/participacion-interface";
     constructor(private oHttp: HttpClient) {
       this.url = `${baseURL}${this.entityURL}`;
     }
+
+    newOne(oParticipacion2Send: IParticipacion2Send): Observable<number> {
+        return this.oHttp.post<number>(this.url + "/", oParticipacion2Send,{withCredentials:true});
+      }
+
+    validar(oParticipacion2Send: IParticipacion2Send): Observable<boolean> {
+        return this.oHttp.post<boolean>(this.url + "/validar", oParticipacion2Send);
+    };
 
     getParticipacionPlist(page: number, size: number, id_usuario: number, id_evento: number, strSortField: string, strOrderDirection: string): Observable<IPage<IParticipacion>> {
       let params = new HttpParams()
