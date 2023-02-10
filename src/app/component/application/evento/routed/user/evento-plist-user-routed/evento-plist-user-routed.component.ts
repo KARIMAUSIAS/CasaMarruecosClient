@@ -6,7 +6,9 @@ import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/
 import { IEvento } from 'src/app/model/evento-interface';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { EventoService } from 'src/app/service/evento.service';
-import { IParticipacion2Send } from 'src/app/model/participacion-interface';
+import { IParticipacion, IParticipacion2Send } from 'src/app/model/participacion-interface';
+import { IMultimedia } from 'src/app/model/multimedia-interface';
+import { MultimediaService } from 'src/app/service/multimedia.service';
 declare let bootstrap: any;
 
 @Component({
@@ -18,13 +20,16 @@ export class EventoPlistUserRoutedComponent implements OnInit {
 
     responseFromServer: IPage<IEvento>;
     oParticipacion2Send: IParticipacion2Send = null;
+    multimedias: String[] = null;
     //
     mimodal: string = "miModal";
     myModal: any;
     modalTitle: string = "";
     modalContent: string = "";
     //
+    validante: number = 0;
     id_usuario: number = 0;
+    id_eventoFilter: number = 0;
     now = Date();
     strTermFilter: string = "";
     numberOfElements: number = 8;
@@ -42,6 +47,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
       private oEventoService: EventoService,
       private oSessionService: SessionService,
       private oParticipacionService: ParticipacionService,
+      private oMultimediaService: MultimediaService,
     ) {
         this.oSessionService.getUserId().subscribe((n: number) => this.id_usuario = n);
     }
@@ -56,6 +62,8 @@ export class EventoPlistUserRoutedComponent implements OnInit {
       .subscribe({
         next: (resp: IPage<IEvento>) => {
           this.responseFromServer = resp;
+          console.log(resp);
+
           if (this.page > resp.totalPages - 1) {
             this.page = resp.totalPages - 1;
           }
@@ -128,27 +136,64 @@ export class EventoPlistUserRoutedComponent implements OnInit {
     this.oParticipacionService.newOne(this.oParticipacion2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
+          if(data == null){
+            this.modalTitle = "CasaMarruecos";
+            this.modalContent = "Ya participas en el evento";
+            this.showModal(data);
+          }else{
           this.modalTitle = "CasaMarruecos";
-          this.modalContent = "Unido al evento " + data;
+          this.modalContent = "Unido al evento";
           this.showModal(data);
         }
+    }
       });
   }
 
-  validarParticipacion(id_evento: number): boolean{
+  borrarParticipacion(id_evento: number):void{
 
-    this.oParticipacion2Send = {
-        id: 0,
-        usuario: {id: this.id_usuario  },
-        evento: {id: id_evento  }
-      }
-
-    var validacion;
-    this.oParticipacionService.validar(this.oParticipacion2Send).subscribe((b: boolean) => validacion = b);
-    
-
-    return validacion;
+    this.oParticipacionService.removeOne(this.id_usuario, id_evento).subscribe({
+        next: (data: number) => {
+          //open bootstrap modal here
+          if(data == null){
+            this.modalTitle = "CasaMarruecos";
+            this.modalContent = "No participas en el evento";
+            this.showModal(data);
+          }else{
+          this.modalTitle = "CasaMarruecos";
+          this.modalContent = "Participacion borrada";
+          this.showModal(data);
+        }
+    }
+      });
   }
 
+    getArchivo(id_evento: number) {
 
-}
+            this.oMultimediaService.getArchivos(id_evento).subscribe({
+                next: (data: String) => {
+                    return data;
+                },
+                error: (err: HttpErrorResponse) => {
+                  console.log(err);
+                }
+            });
+
+        }
+
+        validarParticipacion(id_evento: number): boolean{
+
+            this.oParticipacion2Send = {
+                id: 0,
+                usuario: {id: this.id_usuario  },
+                evento: {id: id_evento  }
+              }
+
+            var validacion;
+            this.oParticipacionService.validar(this.id_usuario, id_evento).subscribe((b: boolean) => validacion = b);
+
+            return validacion;
+          }
+
+
+    }
+

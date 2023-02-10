@@ -31,12 +31,11 @@ export class ParticipacionPlistAdminRoutedComponent implements OnInit {
     faArrowDown = faArrowDown;
 
     constructor(
-      private oParticipacionService: ParticipacionService,
-      private oEventoService: EventoService,
-      private oUsuarioService: UsuarioService,
+      private oParticipacionService: ParticipacionService
     ) { }
 
     ngOnInit() {
+        this.getPage();
 
     }
 
@@ -69,19 +68,17 @@ export class ParticipacionPlistAdminRoutedComponent implements OnInit {
     setFilter(term: string): void {
       this.strTermFilter = term;
       this.setPage(0);
-      this.getPage();
     }
 
     setFilterByEvento(id: number): void {
       this.id_eventoFilter = id;
       this.setPage(0);
-      this.getPage();
+
     }
 
     setFilterByUsuario(id: number): void {
         this.id_usuarioFilter = id;
         this.setPage(0);
-        this.getPage();
       }
 
     setOrder(order: string): void {

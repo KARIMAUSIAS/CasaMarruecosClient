@@ -8,9 +8,7 @@
 
 #texto{
     color: aliceblue;
-    display: grid;
-    grid-template-columns: 1.65fr 1fr 1fr 1fr 0.5fr;
-    grid-template-rows: 1fr 2fr 1fr;
+
 
 }
 .fondo-texto{
@@ -18,27 +16,13 @@
     border-radius: 3%;
 }
 
-#texto1{
-    grid-area: 2/2/3/3;
-}
-#texto2{
-    grid-area: 1/3/3/4;
-}
-#texto3{
-    grid-area: 1/4/3/5;
-}
 
 
-#fondo{
-    background-image: url(../../../../../assets/fondomarruecos.jpg);
+#container{
+    background-image: url("/assets/fondomarruecos.jpg");
     background-repeat: no-repeat;
-    width: 100%;
-    height: 35.8vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-size: cover;
+
 }
 
 

@@ -1,7 +1,10 @@
 /*====================
 	Footer
 ====================== */
-
+footer{
+    position: sticky;
+    top: 100%;
+}
 /* Main Footer */
 footer .main-footer {
     padding: 20px 0;
@@ -74,12 +77,14 @@ footer.light .footer-copyright {
     margin-bottom: 18px;
 }
 
-.widget li a {
-    color: #ff8d1e;
+a{
+    text-decoration: none;
+    color: #09a9d0;
 }
 
-.widget li a:hover {
-    color: #4b92dc;
+a:hover {
+    color: #cfad14;
+    text-decoration: underline;
 }
 
 .widget-title {
@@ -141,7 +146,7 @@ ul.social-footer2 li {
 }
 
 ul.social-footer2 li a:hover {
-    background-color: #ff8d1e;
+    background-color: #09a9d0;
 }
 
 ul.social-footer2 li a {
@@ -152,12 +157,12 @@ ul.social-footer2 li a {
 }
 
 .btn {
-    background-color: #ff8d1e;
+    background-color: #09a9d0;
     color: #fff;
 }
 
 .btn:hover, .btn:focus, .btn.active {
-    background: #4b92dc;
+    background: #222543;
     color: #fff;
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);

@@ -1,3 +1,4 @@
+import { ParticipacionPlistAdminRoutedComponent } from './component/application/participacion/routed/participacion-plist-admin-routed/participacion-plist-admin-routed.component';
 import { EventoPlistUserRoutedComponent } from './component/application/evento/routed/user/evento-plist-user-routed/evento-plist-user-routed.component';
 import { AccionViewAdminRoutedComponent } from './component/application/accion/routed/accion-view-admin-routed/accion-view-admin-routed.component';
 import { AccionPlistAdminRoutedComponent } from './component/application/accion/routed/accion-plist-admin-routed/accion-plist-admin-routed.component';
@@ -84,6 +85,8 @@ const routes: Routes = [
   { path: 'admin/multimedia/view/:id', component: MultimediaViewAdminRoutedComponent },
   { path: 'admin/multimedia/remove/:id', component: MultimediaDeleteAdminRoutedComponent },
   { path: 'admin/multimedia/edit/:id', component: MultimediaEditAdminRoutedComponent },
+
+  { path: 'admin/participacion/plist', component: ParticipacionPlistAdminRoutedComponent},
 ];
 
 @NgModule({

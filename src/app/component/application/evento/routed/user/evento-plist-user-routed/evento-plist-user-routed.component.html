@@ -2,7 +2,8 @@
 <div class="card-wrap">
     <article class="card" *ngFor="let evento of responseFromServer.content">
         <header class="header-card">
-            <img src="assets/fondomarruecos.jpg" alt="" />
+            <!-- <img [src]="getArchivo(0)" alt="" /> -->
+            <img src="/assets/fondomarruecos.jpg" alt="">
         </header>
         <footer class="footer-card">
             <div class="categoria-card">
@@ -11,14 +12,14 @@
                 *ngIf="!fechaisLater(evento.fecha)">Cerrado</span>
             </div>
             <div class="texto-card">
-                <h3>{{ evento.fecha }}</h3>
+                <h3>{{ evento.fecha | date: 'dd/MM/yyyy' }}</h3>
                 <p>
                     {{evento.descripcion}}
                 </p>
             </div>
-            <div class="boton-perfil-card" *ngIf="fechaisLater(evento.fecha)">
-                <!--<button class="btn btn-sm btn-primary" (click)="unirseEvento(evento.id)" *ngIf="validarParticipacion(evento.id)">Unirse</button>-->
-                <button class="btn btn-sm btn-primary" (click)="unirseEvento(evento.id)">Unirse</button>
+            <div class="boton-perfil-card btn-group" role="group" *ngIf="fechaisLater(evento.fecha)">
+                <button class="unirse-btn m-1" (click)="unirseEvento(evento.id)">Unirse</button>
+                <button class="cancelar-btn m-1"  (click)="borrarParticipacion(evento.id)">Dejar de participar</button>
             </div>
         </footer>
     </article>

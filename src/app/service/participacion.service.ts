@@ -19,11 +19,21 @@ import { IParticipacion, IParticipacion2Send } from "../model/participacion-inte
     }
 
     newOne(oParticipacion2Send: IParticipacion2Send): Observable<number> {
-        return this.oHttp.post<number>(this.url + "/", oParticipacion2Send,{withCredentials:true});
+        return this.oHttp.post<number>(this.url + "/", oParticipacion2Send);
       }
 
-    validar(oParticipacion2Send: IParticipacion2Send): Observable<boolean> {
-        return this.oHttp.post<boolean>(this.url + "/validar", oParticipacion2Send);
+    removeOne(id_usuario: number, id_evento: number): Observable<number> {
+        let params = new HttpParams()
+        .set("usuario", id_usuario)
+        .set("evento", id_evento);
+        return this.oHttp.delete<number>(this.url,{ params: params });
+    };
+
+    validar(id_usuario: number, id_evento: number): Observable<boolean> {
+        let params = new HttpParams()
+        .set("usuario", id_usuario)
+        .set("evento", id_evento);
+        return this.oHttp.get<boolean>(this.url + "/validar",{withCredentials:true, params: params });
     };
 
     getParticipacionPlist(page: number, size: number, id_usuario: number, id_evento: number, strSortField: string, strOrderDirection: string): Observable<IPage<IParticipacion>> {
