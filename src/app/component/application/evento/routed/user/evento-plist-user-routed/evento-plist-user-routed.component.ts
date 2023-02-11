@@ -9,6 +9,7 @@ import { EventoService } from 'src/app/service/evento.service';
 import { IParticipacion, IParticipacion2Send } from 'src/app/model/participacion-interface';
 import { IMultimedia } from 'src/app/model/multimedia-interface';
 import { MultimediaService } from 'src/app/service/multimedia.service';
+import { Subscription } from 'rxjs';
 declare let bootstrap: any;
 
 @Component({
@@ -17,6 +18,8 @@ declare let bootstrap: any;
   styleUrls: ['./evento-plist-user-routed.component.css']
 })
 export class EventoPlistUserRoutedComponent implements OnInit {
+
+    subscription: Subscription;
 
     responseFromServer: IPage<IEvento>;
     oParticipacion2Send: IParticipacion2Send = null;
@@ -169,15 +172,22 @@ export class EventoPlistUserRoutedComponent implements OnInit {
 
     getArchivo(id_evento: number) {
 
-            this.oMultimediaService.getArchivos(id_evento).subscribe({
-                next: (data: String) => {
-                    return data;
-                },
-                error: (err: HttpErrorResponse) => {
-                  console.log(err);
-                }
-            });
+        this.subscription = this.oMultimediaService.getArchivos(id_evento).subscribe({
+            next: (data: String) => {
+              return data;
+            },
+            error: (err: HttpErrorResponse) => {
+              console.log(err);
+            }
+          });
+          this.cerrarSuscripcion();
+        }
 
+        // Para cerrar la suscripción
+        cerrarSuscripcion() {
+          if (this.subscription && !this.subscription.closed) {
+            this.subscription.unsubscribe();
+          }
         }
 
         validarParticipacion(id_evento: number): boolean{
@@ -189,9 +199,12 @@ export class EventoPlistUserRoutedComponent implements OnInit {
               }
 
             var validacion;
-            this.oParticipacionService.validar(this.id_usuario, id_evento).subscribe((b: boolean) => validacion = b);
+            this.subscription = this.oParticipacionService.validar(this.id_usuario, id_evento).subscribe((b: boolean) => validacion = b);
 
+            this.cerrarSuscripcion();
             return validacion;
+
+
           }
 
 
