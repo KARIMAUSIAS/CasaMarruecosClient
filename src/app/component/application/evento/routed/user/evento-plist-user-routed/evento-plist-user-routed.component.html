@@ -1,4 +1,8 @@
 <div class="fondo">
+    <div class="paginacion" >
+    <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+    (eePage)="setPage($event)"></app-pagination-unrouted>
+    </div>
 <div class="card-wrap">
     <article class="card" *ngFor="let evento of responseFromServer.content">
         <header class="header-card">

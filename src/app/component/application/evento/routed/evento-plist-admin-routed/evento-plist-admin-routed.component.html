@@ -14,10 +14,10 @@
             (eePage)="setPage($event)"></app-pagination-unrouted>
         </div>
         <div class="col-md text-end">
-          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+          <h5>Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
         </div>
         <table class="table table-bordered table-striped">
-          <thead>
+            <thead class="table-dark">
             <tr>
               <th (click)="setOrder('id')">ID
                 <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>

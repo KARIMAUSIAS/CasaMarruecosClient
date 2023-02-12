@@ -13,17 +13,17 @@
             (eePage)="setPage($event)"></app-pagination-unrouted>
         </div>
         <div class="col-md text-start">
-          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <h5 class="" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
           <button class="btn btn-outline-danger" *ngIf="id_eventoFilter!=0" (click)="setFilterByEvento(0)">
             <i class="bi bi-x-circle"></i> Reset Evento {{id_eventoFilter}} filter</button>
             <button class="btn btn-outline-danger" *ngIf="id_usuarioFilter!=0" (click)="setFilterByUsuario(0)">
             <i class="bi bi-x-circle"></i> Reset Usuario {{id_usuarioFilter}} filter</button>
         </div>
         <div class="col-md text-end">
-          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+          <h5 class="">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
         </div>
         <table class="table table-bordered table-striped">
-          <thead>
+            <thead class="table-dark">
             <tr>
               <th (click)="setOrder('id')">ID
                 <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>

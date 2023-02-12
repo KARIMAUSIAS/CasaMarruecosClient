@@ -13,7 +13,7 @@
             (eePage)="setPage($event)"></app-pagination-unrouted>
         </div>
         <table class="table table-bordered table-striped">
-          <thead>
+            <thead class="table-dark">
             <tr>
                 <th (click)="setOrder('id')">ID
                     <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>

@@ -6,6 +6,16 @@
 
 body{
     min-height: 100vh;
+    background-color: #968ca4;
+}
+
+tr{
+    background-color: white;
+}
+
+label{
+    color: white;
+    font-weight: bold;
 }
 
 

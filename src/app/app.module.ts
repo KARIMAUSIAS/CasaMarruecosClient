@@ -65,6 +65,8 @@ import { ParticipacionPlistAdminRoutedComponent } from './component/application/
 import { ParticipacionPlistusuarioAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistusuario-admin-unrouted/participacion-plistusuario-admin-unrouted.component';
 import { ParticipacionPlisteventoAdminUnroutedComponent } from './component/application/participacion/unrouted/participacion-plistevento-admin-unrouted/participacion-plistevento-admin-unrouted.component';
 import { EventoPlistUserRoutedComponent } from './component/application/evento/routed/user/evento-plist-user-routed/evento-plist-user-routed.component';
+import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
+import { UsuarioDetailUserUnroutedComponent } from './component/application/usuario/unrouted/user/usuario-detail-user-unrouted/usuario-detail-user-unrouted.component';
 
 
 @NgModule({
@@ -124,6 +126,8 @@ import { EventoPlistUserRoutedComponent } from './component/application/evento/r
     ParticipacionPlistusuarioAdminUnroutedComponent,
     ParticipacionPlisteventoAdminUnroutedComponent,
     EventoPlistUserRoutedComponent,
+    UsuarioViewUserRoutedComponent,
+    UsuarioDetailUserUnroutedComponent,
   ],
   imports: [
     BrowserModule,
