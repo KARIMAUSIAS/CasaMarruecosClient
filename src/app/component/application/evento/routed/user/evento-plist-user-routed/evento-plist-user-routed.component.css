@@ -1,12 +1,12 @@
-*{
+* {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-img{
+img {
     max-width: 100%;
 }
 
-article.card{
+article.card {
     max-width: 350px;
     background-color: #f8f8f8;
     border-radius: 8px;
@@ -14,77 +14,81 @@ article.card{
     box-shadow: 0 0 12px #d7d7d7;
 }
 
-.header-card img{
+.header-card img {
     border-radius: 8px 8px 0 0;
     max-height: 200px;
     height: 200px;
     width: 100%;
 }
 
-.categoria-card{
+.categoria-card {
     margin-top: 1rem;
 }
 
-.categoria-card span{
+.categoria-card span {
     background: #25c4d8;
     color: #fff;
     padding: .2rem .5rem;
     border-radius: 4px;
 }
 
-.categoria-card span.cerrado{
+.categoria-card span.cerrado {
     background: red;
     color: #fff;
     padding: .2rem .5rem;
     border-radius: 4px;
 }
 
-.card footer{
+.card footer {
     padding: 0 1rem;
 }
 
-.card-wrap{
+.card-wrap {
     display: flex;
     flex-flow: wrap;
     gap: 3%;
     justify-content: center;
 }
-.boton-perfil-card{
+
+.boton-perfil-card {
     float: right;
     margin-bottom: 6px;
 }
-.fondo{
+
+button{
+    border-radius: 6px;
+}
+
+.fondo {
     background-color: #968ca4;
 }
 
-.unirse-btn{
+.unirse-btn {
     background-color: #222543;
     color: #09a9d0;
     border: 1px solid #09a9d0;
-    border-radius: 0px;
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
+}
 
-  .unirse-btn:hover {
+.unirse-btn:hover {
     background-color: #09a9d0;
     color: #222543;
     border-color: #222543;
     right: 0px;
 }
 
-.cancelar-btn{
-    background-color: #f70000;
+.cancelar-btn {
+    background-color: #920d0d;
     color: #ffffff;
     border: 1px solid #020607;
-    border-radius: 0px;
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
+}
 
-  .cancelar-btn:hover {
+.cancelar-btn:hover {
     background-color: #000000;
     color: #ff0000;
     border-color: #ff0000;
