@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Subject } from 'rxjs';
 import { MultimediaService } from 'src/app/service/multimedia.service';
+import { ParticipacionService } from 'src/app/service/participacion.service';
 
 @Component({
   selector: 'app-generate',
@@ -19,6 +20,7 @@ export class GenerateComponent implements OnInit {
     nIncidencias: number = 0;
     nEventos: number = 0;
     nMultimedias: number = 0;
+    nParticipaciones: number = 0;
     bLoading:boolean=false;
     strResult: string = "";
 
@@ -30,6 +32,7 @@ export class GenerateComponent implements OnInit {
     public oAccionService: AccionService,
     public oEventoService: EventoService,
     public oMultimediaService: MultimediaService,
+    public oParticipacionService: ParticipacionService,
   ) {
 
   }
@@ -40,6 +43,7 @@ export class GenerateComponent implements OnInit {
     this.getCountAcciones();
     this.getCountEventos();
     this.getCountMultimedias();
+    this.getCountParticipaciones();
   }
 
   generateUsuarios(n: number): void {
@@ -115,6 +119,20 @@ export class GenerateComponent implements OnInit {
         this.bLoading=false;
       })
   }
+  generateParticipaciones(n: number): void {
+    this.bLoading=true;
+    this.oGenerateService.generateParticipaciones(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " Participaciones";
+        this.bLoading=false;
+        this.getCountParticipaciones();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.bLoading=false;
+      })
+  }
 
   eventsModalSubject: Subject<string> = new Subject<string>();
 
@@ -132,6 +150,9 @@ export class GenerateComponent implements OnInit {
   }
   getCountMultimedias(): void{
     this.oMultimediaService.getCountMultimedias().subscribe((n: number) => this.nMultimedias = n);
+  }
+  getCountParticipaciones(): void{
+    this.oParticipacionService.getCountParticipaciones().subscribe((n: number) => this.nParticipaciones = n);
   }
 
 }

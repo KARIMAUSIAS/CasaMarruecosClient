@@ -30,4 +30,7 @@ export class GenerateService {
   generateMultimedias(n: number): Observable<number> {
     return this.http.post<number>(baseURL + '/multimedia/generate/' + n, { amount: n }, httpOptions);
   }
+  generateParticipaciones(n: number): Observable<number> {
+    return this.http.post<number>(baseURL + '/participacion/generate/' + n, { amount: n }, httpOptions);
+  }
 }

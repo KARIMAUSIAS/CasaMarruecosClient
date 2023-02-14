@@ -92,7 +92,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
       })
       var myModalEl = document.getElementById(this.mimodal);
       myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-        this.oRouter.navigate(['/admin/Usuario/view', this.id])
+        this.oRouter.navigate(['/admin/usuario/view', this.id])
       })
       this.myModal.show()
     }

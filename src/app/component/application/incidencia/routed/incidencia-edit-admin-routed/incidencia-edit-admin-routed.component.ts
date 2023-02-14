@@ -88,10 +88,10 @@ export class IncidenciaEditAdminRoutedComponent implements OnInit {
       })
       var myModalEl = document.getElementById(this.mimodal);
       myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-        this.oRouter.navigate(['/admin/Incidencia/view', this.id])
+        this.oRouter.navigate(['/admin/incidencia/view', this.id])
       })
       this.myModal.show()
-    
+
     }
 
     openModalFindUsuario(): void {

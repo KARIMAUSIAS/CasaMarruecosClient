@@ -55,8 +55,4 @@ import { IMultimedia, IMultimedia2Send } from "../model/multimedia-interface";
       return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
     }
 
-    getArchivos(id: number): Observable<String>{
-        return this.oHttp.get<String>(this.url + "/archivo/" + id);
-    }
-
   }

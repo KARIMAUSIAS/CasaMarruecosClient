@@ -56,4 +56,12 @@ import { IParticipacion, IParticipacion2Send } from "../model/participacion-inte
       return this.oHttp.get<IPage<IParticipacion>>(this.url, {withCredentials:true, params: params });
     }
 
+    getCountParticipaciones(): Observable<number> {
+        return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
+      }
+
+    getParticipacionesUser(id_usuario: number): Observable<Array<number>>{
+        return this.oHttp.get<Array<number>>(this.url + "/eventos/"+ id_usuario)
+    }
+
   }

@@ -36,7 +36,7 @@
           <tbody>
             <tr *ngFor="let multimedia of responseFromServer.content">
               <td>{{multimedia.id}}</td>
-              <td><img src={{multimedia.archivo}} alt="" width="auto" height="180px"></td>
+              <td class="imagen"><img src={{multimedia.archivo}} alt="" width="100%"></td>
               <td (click)="setFilterByEvento(multimedia.evento.id)">
                 {{multimedia.evento.id}}</td>
                 <td>{{multimedia.evento.fecha}}</td>

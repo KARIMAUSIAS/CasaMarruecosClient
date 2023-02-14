@@ -3,7 +3,6 @@
       <div class="col">
         <h1 class="text-center mb-5">Lista de tipousuarios</h1>
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
-            <a [routerLink]="['/admin/tipousuario/new']" class="btn btn-primary mx-3">Alta de tipo usuario</a>
           <app-search-unrouted [placeHolder]="'Buscar tipousuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
           <app-dropdown-register-page class="mx-2" [PageSize]="this.getPageRegister()" (eeRpp)="this.setRpp($event)">
           </app-dropdown-register-page>
@@ -40,9 +39,6 @@
                     </button>
                     <button class="btn btn-sm btn-warning" [routerLink]="['/admin/tipousuario/edit',tipousuario.id]">
                       <fa-icon [icon]="faUserPen"></fa-icon>
-                    </button>
-                    <button class="btn btn-sm btn-danger" [routerLink]="['/admin/tipousuario/remove',tipousuario.id]">
-                      <fa-icon [icon]="faTrash"></fa-icon>
                     </button>
                   </div>
               </td>

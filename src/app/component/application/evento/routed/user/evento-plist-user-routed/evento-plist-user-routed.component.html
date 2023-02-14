@@ -1,13 +1,12 @@
 <div class="fondo">
-    <div class="paginacion" >
+    <div class="paginacion m-5" >
     <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
     (eePage)="setPage($event)"></app-pagination-unrouted>
     </div>
 <div class="card-wrap">
     <article class="card" *ngFor="let evento of responseFromServer.content">
         <header class="header-card">
-            <!-- <img [src]="getArchivo(0)" alt="" /> -->
-            <img src="/assets/fondomarruecos.jpg" alt="">
+            <img src="{{evento.imagen}}" alt="" width="50%">
         </header>
         <footer class="footer-card">
             <div class="categoria-card">
@@ -22,8 +21,10 @@
                 </p>
             </div>
             <div class="boton-perfil-card btn-group" role="group" *ngIf="fechaisLater(evento.fecha)">
-                <button class="unirse-btn m-1" (click)="unirseEvento(evento.id)">Unirse</button>
+                <button class="unirse-btn m-1" (click)="unirseEvento(evento.id)" *ngIf="participacionesUser.indexOf(evento.id)<=0; else elseBlock">Unirse</button>
+                <ng-template #elseBlock>
                 <button class="cancelar-btn m-1"  (click)="borrarParticipacion(evento.id)">Dejar de participar</button>
+                </ng-template>
             </div>
         </footer>
     </article>

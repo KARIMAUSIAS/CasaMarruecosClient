@@ -41,6 +41,7 @@ export class EventoNewAdminRoutedComponent implements OnInit {
         id: [''],
         fecha: ['', [Validators.required]],
         descripcion: ['', [Validators.required]],
+        imagen: ['', [Validators.required]],
       });
     }
 
@@ -50,6 +51,7 @@ export class EventoNewAdminRoutedComponent implements OnInit {
         id: this.oForm.value.id,
         fecha: this.oForm.value.fecha,
         descripcion: this.oForm.value.descripcion,
+        imagen: this.oForm.value.imagen
       }
       if (this.oForm.valid) {
         this.oEventoService.newOne(this.oEvento2Send).subscribe({

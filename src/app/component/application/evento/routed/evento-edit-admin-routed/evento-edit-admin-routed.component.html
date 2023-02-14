@@ -45,6 +45,31 @@
             </div>
           </div>
 
+          <div class="mb-3 row">
+            <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-4 has-validation">
+              <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.imagen.dirty && !oForm.controls.imagen.errors?.['required'] &&
+              oForm.controls.imagen.dirty && !oForm.controls.imagen.errors?.['minlength']
+                && oForm.controls.imagen.dirty && !oForm.controls.imagen.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['minlength']
+                ||  oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['maxlength'] ||
+                oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['required']}" id="inputImagen"
+                formControlName="imagen">
+              <div id="inputImagenFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['minlength']">
+                La longitud mínima es de 5 caracteres.
+              </div>
+              <div id="inputImagenFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['maxlength']">
+                La longitud máxima es de 10 caracteres.
+              </div>
+              <div id="inputImagenFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.imagen.dirty &&  oForm.controls.imagen.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary"
             [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
 

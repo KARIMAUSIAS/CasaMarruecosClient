@@ -10,6 +10,7 @@ import { IParticipacion, IParticipacion2Send } from 'src/app/model/participacion
 import { IMultimedia } from 'src/app/model/multimedia-interface';
 import { MultimediaService } from 'src/app/service/multimedia.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 declare let bootstrap: any;
 
 @Component({
@@ -23,7 +24,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
 
     responseFromServer: IPage<IEvento>;
     oParticipacion2Send: IParticipacion2Send = null;
-    multimedias: String[] = null;
+    participacionesUser: number[];
     //
     mimodal: string = "miModal";
     myModal: any;
@@ -50,12 +51,18 @@ export class EventoPlistUserRoutedComponent implements OnInit {
       private oEventoService: EventoService,
       private oSessionService: SessionService,
       private oParticipacionService: ParticipacionService,
-      private oMultimediaService: MultimediaService,
+      private oRouter: Router,
     ) {
-        this.oSessionService.getUserId().subscribe((n: number) => this.id_usuario = n);
+        this.oSessionService.getUserId().subscribe({
+            next: (data: number) =>{
+                this.getParticipaciones(data);
+            }
+        });
+
     }
 
     ngOnInit() {
+      this.oSessionService.getUserId().subscribe((n: number) => this.id_usuario = n);
       this.getPage();
     }
 
@@ -108,7 +115,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
   fechaisLater(fecha: Date): boolean{
 
     //const fecha2 = new Date(this.now);
-    const fecha2 = new Date("2019-10-10");
+    const fecha2 = new Date("2010-10-10");
     const fecha1 = new Date(fecha);
 
 
@@ -125,6 +132,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
+        window.location.reload();
     })
     this.myModal.show()
   }
@@ -165,48 +173,21 @@ export class EventoPlistUserRoutedComponent implements OnInit {
           this.modalTitle = "CasaMarruecos";
           this.modalContent = "Participacion borrada";
           this.showModal(data);
+
         }
     }
       });
   }
 
-    getArchivo(id_evento: number) {
+  getParticipaciones(id: number){
 
-        this.subscription = this.oMultimediaService.getArchivos(id_evento).subscribe({
-            next: (data: String) => {
-              return data;
-            },
-            error: (err: HttpErrorResponse) => {
-              console.log(err);
-            }
-          });
-          this.cerrarSuscripcion();
+    this.oParticipacionService.getParticipacionesUser(id).subscribe({
+        next: (data: Array<number>) => {
+            this.participacionesUser = data;
+
         }
+    })
+  }
 
-        // Para cerrar la suscripción
-        cerrarSuscripcion() {
-          if (this.subscription && !this.subscription.closed) {
-            this.subscription.unsubscribe();
-          }
-        }
-
-        validarParticipacion(id_evento: number): boolean{
-
-            this.oParticipacion2Send = {
-                id: 0,
-                usuario: {id: this.id_usuario  },
-                evento: {id: id_evento  }
-              }
-
-            var validacion;
-            this.subscription = this.oParticipacionService.validar(this.id_usuario, id_evento).subscribe((b: boolean) => validacion = b);
-
-            this.cerrarSuscripcion();
-            return validacion;
-
-
-          }
-
-
-    }
+}
 

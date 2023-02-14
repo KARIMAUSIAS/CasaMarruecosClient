@@ -96,6 +96,21 @@
               </div>
             </td>
           </tr>
+          <tr>
+            <th>Participaciones</th>
+            <td class="text-center">{{nParticipaciones}}</td>
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+                <button type="button" class="btn btn-success mx-2" (click)="generateParticipaciones(10)">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="bLoading"></span>
+                  10</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateParticipaciones(100)">
+                  100</button>
+                <button type="button" class="btn btn-success mx-2" (click)="generateParticipaciones(1000)">
+                  1000</button>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
   </div>
