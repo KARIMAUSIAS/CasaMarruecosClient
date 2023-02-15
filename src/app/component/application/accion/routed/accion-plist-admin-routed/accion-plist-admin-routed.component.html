@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Lista de accions</h1>
+        <h1 class="text-center mb-5">Lista de acciones</h1>
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
           <a [routerLink]="['/admin/accion/new']" class="btn btn-primary mx-3">Alta de accion</a>
           <app-search-unrouted [placeHolder]="'Buscar accion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
