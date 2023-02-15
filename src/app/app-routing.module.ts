@@ -37,6 +37,7 @@ import { MultimediaDeleteAdminRoutedComponent } from './component/application/mu
 import { MultimediaEditAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-edit-admin-routed/multimedia-edit-admin-routed.component';
 import { MultimediaNewAdminRoutedComponent } from './component/application/multimedia/routed/multimedia-new-admin-routed/multimedia-new-admin-routed.component';
 import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
+import { UsuarioEditUserRoutedComponent } from './component/application/usuario/routed/user/usuario-edit-user-routed/usuario-edit-user-routed.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent },
 
   { path: 'user/usuario/view/:id', component: UsuarioViewUserRoutedComponent },
+  { path: 'user/usuario/edit/:id', component: UsuarioEditUserRoutedComponent },
 
   { path: 'admin/tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent },
   { path: 'admin/tipousuario/new', component: TipousuarioNewAdminRoutedComponent },

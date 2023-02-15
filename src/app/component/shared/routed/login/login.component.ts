@@ -1,9 +1,7 @@
 import { IUser } from 'src/app/model/user-interface';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CryptoService } from 'src/app/service/crypto.service';
-import { MetadataService } from 'src/app/service/metadata.service';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EmitEvent, Events, SessionService } from 'src/app/service/session.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DecodeService } from 'src/app/service/decode.service';

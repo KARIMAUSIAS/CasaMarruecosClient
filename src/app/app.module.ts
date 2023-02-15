@@ -67,6 +67,7 @@ import { ParticipacionPlisteventoAdminUnroutedComponent } from './component/appl
 import { EventoPlistUserRoutedComponent } from './component/application/evento/routed/user/evento-plist-user-routed/evento-plist-user-routed.component';
 import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
 import { UsuarioDetailUserUnroutedComponent } from './component/application/usuario/unrouted/user/usuario-detail-user-unrouted/usuario-detail-user-unrouted.component';
+import { UsuarioEditUserRoutedComponent } from './component/application/usuario/routed/user/usuario-edit-user-routed/usuario-edit-user-routed.component';
 
 
 @NgModule({
@@ -128,6 +129,7 @@ import { UsuarioDetailUserUnroutedComponent } from './component/application/usua
     EventoPlistUserRoutedComponent,
     UsuarioViewUserRoutedComponent,
     UsuarioDetailUserUnroutedComponent,
+    UsuarioEditUserRoutedComponent,
   ],
   imports: [
     BrowserModule,
