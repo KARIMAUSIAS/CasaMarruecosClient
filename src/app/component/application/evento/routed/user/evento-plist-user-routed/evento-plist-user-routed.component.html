@@ -21,6 +21,7 @@
                     {{evento.descripcion}}
                 </p>
             </div>
+            <button class="" [routerLink]="['/user','evento','plist','multimedia',evento.id]">Ver Galeria</button>
             <div class="boton-perfil-card btn-group" role="group" *ngIf="fechaisLater(evento.fecha)">
                 <button class="unirse-btn m-1" (click)="unirseEvento(evento.id)" *ngIf="participacionesUser.indexOf(evento.id)<=0; else elseBlock">Unirse</button>
                 <ng-template #elseBlock>

@@ -68,7 +68,7 @@ import { EventoPlistUserRoutedComponent } from './component/application/evento/r
 import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
 import { UsuarioDetailUserUnroutedComponent } from './component/application/usuario/unrouted/user/usuario-detail-user-unrouted/usuario-detail-user-unrouted.component';
 import { UsuarioEditUserRoutedComponent } from './component/application/usuario/routed/user/usuario-edit-user-routed/usuario-edit-user-routed.component';
-
+import { MultimediaPlistUserRoutedComponent } from './component/application/multimedia/routed/user/multimedia-plist-user-routed/multimedia-plist-user-routed.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +130,8 @@ import { UsuarioEditUserRoutedComponent } from './component/application/usuario/
     UsuarioViewUserRoutedComponent,
     UsuarioDetailUserUnroutedComponent,
     UsuarioEditUserRoutedComponent,
+    MultimediaPlistUserRoutedComponent,
+
   ],
   imports: [
     BrowserModule,
