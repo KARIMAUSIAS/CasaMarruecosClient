@@ -5,10 +5,6 @@
     <div class="carousel-inner">
       <div *ngFor="let image of fotos; let i = index" class="carousel-item" [class.active]="i === 0">
         <img [src]="image" class="d-block w-100 carrousel-image">
-        <button class="btn btn-secondary back-button" [routerLink]="['/user','evento','plist']">
-            Volver atrás
-            <span class="back-button-icon">←</span>
-          </button>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
