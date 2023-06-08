@@ -36,7 +36,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
     id_eventoFilter: number = 0;
     now = Date();
     strTermFilter: string = "";
-    numberOfElements: number = 8;
+    numberOfElements: number = 6;
     page: number = 0;
     sortField: string = "fecha";
     sortDirection: string = "desc";
@@ -115,7 +115,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
   fechaisLater(fecha: Date): boolean{
 
     //const fecha2 = new Date(this.now);
-    const fecha2 = new Date("2010-10-10");
+    const fecha2 = new Date("2012-10-10");
     const fecha1 = new Date(fecha);
 
 

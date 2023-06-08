@@ -53,7 +53,7 @@ export class MultimediaEditAdminRoutedComponent implements OnInit {
             this.imagenSrc = data.archivo;
             this.oForm = <FormGroup>this.oFormBuilder.group({
               id: [data.id, [Validators.required]],
-              archivo: [],
+              archivo: [data.archivo, [Validators.required]],
               id_evento: [data.evento.id, [Validators.required]]
             });
             this.updateEventoDescription(this.oMultimedia.evento.id);
