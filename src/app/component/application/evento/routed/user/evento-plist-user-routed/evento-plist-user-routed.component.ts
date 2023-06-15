@@ -36,7 +36,7 @@ export class EventoPlistUserRoutedComponent implements OnInit {
     id_eventoFilter: number = 0;
     now = Date();
     strTermFilter: string = "";
-    numberOfElements: number = 6;
+    numberOfElements: number = 8;
     page: number = 0;
     sortField: string = "fecha";
     sortDirection: string = "desc";
